@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head><meta name="generator" content="Hexo 3.8.0">
-    
-<meta charset="UTF-8">
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
 
 
 <meta http-equiv="Cache-Control" content="no-transform">
@@ -19,16 +32,51 @@
 
 
 
-  <link rel="alternate" href="default" title="Kris的博客">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+  
+  
+  <link href="lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
-<link rel="canonical" href="https://krisdeng.github.io/">
+
+
+
+
+<link href="lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
 
 
 <meta property="og:type" content="website">
@@ -40,233 +88,830 @@
 <meta name="twitter:title" content="Kris的博客">
 
 
-<link rel="stylesheet" type="text/css" href="css/style.css?v=1.1">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-
-
-
-
-<script type="text/javascript">
-  var themeConfig = {
-    fancybox: {
-      enable: false
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
     },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
   };
 </script>
 
 
 
+  <link rel="canonical" href="https://krisdeng.github.io/">
 
+
+
+
+
+  <title>Kris的博客</title>
   
 
 
 
-    <title> Kris的博客 - </title>
-  </head>
 
-  <body>
-    <div id="page">
-      <header id="masthead"><div class="site-header-inner">
-    <h1 class="site-title">
-        <a href="." class="logo">Kris的博客</a>
-    </h1>
 
-    <nav id="nav-top">
-        
-            <ul id="menu-top" class="nav-top-items">
-                
-                    <li class="menu-item">
-                        <a href="">
-                            
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li class="menu-item">
-                        <a href="">
-                            
-                            
-                                About
-                            
-                        </a>
-                    </li>
-                
-            </ul>
-        
-  </nav>
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kris的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Kris的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-      </header>
-      <div id="content">
-        
-    <div id="primary" class="home">
-        
-            
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="2019/04/17/CompileSwift/">Bus error 10与 Command CompileSwift failed with a nonzero exit code</a>
-        
-      </h1>
+<nav class="site-nav">
+  
 
-      <time class="post-time">
-          4月 17 2019
-      </time>
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
     </header>
 
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
 
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://krisdeng.github.io2019/04/17/CompileSwift/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kris">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kris的博客">
+    </span>
 
     
-        <div class="post-excerpt post-content">
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2019/04/17/CompileSwift/" itemprop="url">Bus error 10与 Command CompileSwift failed with a nonzero exit code</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
             
-            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-17T10:10:10+08:00">
+                2019-04-17
+              </time>
             
 
             
-              <p>今天遇到了奇怪的问题，项目编辑的时候在模拟器、手机中都测试通过了，结果在 Archive 的时候报错了。</p>
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>今天遇到了奇怪的问题，项目编辑的时候在模拟器、手机中都测试通过了，结果在 Archive 的时候报错了。</p>
 <p><img src="/blog/2019/04/17/CompileSwift/0657E8204220E0958AD64473CFE2F569.png" alt=""></p>
 <p>[Bus error: 10]、 [Command CompileSwift failed with a nonzero exit code] 这是什么鬼？？ </p>
 <p>为什么 模拟器、手机中联调都没问题，Archive 时候会报错呢，有什么区别吗？？</p>
-        </div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="2019/04/17/CompileSwift/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://krisdeng.github.io2019/03/25/网易IM集成的坑/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kris">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kris的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2019/03/25/网易IM集成的坑/" itemprop="url">网易IM集成的坑</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-25T16:10:10+08:00">
+                2019-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
             
           
 
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-  </article>
-
-        
-            
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="2019/03/25/网易IM集成的坑/">网易IM集成的坑</a>
-        
-      </h1>
-
-      <time class="post-time">
-          3月 25 2019
-      </time>
-    </header>
-
-
 
     
-        <div class="post-excerpt post-content">
-            
-            
-              
-            
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-            
-              <p>因为项目业务需求，产品需要集成网易的IM功能。<br>在认真查看了<a href="https://dev.yunxin.163.com/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/SDK%E5%BC%80%E5%8F%91%E9%9B%86%E6%88%90/iOS%E5%BC%80%E5%8F%91%E9%9B%86%E6%88%90/%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F" target="_blank" rel="noopener">网易集成方式</a>与研究了<a href="https://yunxin.163.com/im-sdk-demo?from=nim&amp;clueFrom=nim" target="_blank" rel="noopener">Demo源码</a>后，决定动手集成到项目工程中。</p>
+      
+      
+
+      
+        
+          <p>因为项目业务需求，产品需要集成网易的IM功能。<br>在认真查看了<a href="https://dev.yunxin.163.com/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/SDK%E5%BC%80%E5%8F%91%E9%9B%86%E6%88%90/iOS%E5%BC%80%E5%8F%91%E9%9B%86%E6%88%90/%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F" target="_blank" rel="noopener">网易集成方式</a>与研究了<a href="https://yunxin.163.com/im-sdk-demo?from=nim&amp;clueFrom=nim" target="_blank" rel="noopener">Demo源码</a>后，决定动手集成到项目工程中。</p>
 <p>然而发现通过 cocoapods 集成了SDK在自己的项目中后，总是报错，Xcode无法编译！！而自己新建的 demo工程中项目都是正常可用的，很奇怪！</p>
-        </div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="2019/03/25/网易IM集成的坑/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://krisdeng.github.io2019/01/29/浅谈Watch App/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kris">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kris的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2019/01/29/浅谈Watch App/" itemprop="url">浅谈 Watch App</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-29T23:50:10+08:00">
+                2019-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="categories/WatchOS/" itemprop="url" rel="index">
+                    <span itemprop="name">WatchOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
             
           
 
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-  </article>
-
-        
-            
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="2019/01/29/浅谈Watch App/">浅谈 Watch App</a>
-        
-      </h1>
-
-      <time class="post-time">
-          1月 29 2019
-      </time>
-    </header>
-
-
 
     
-        <div class="post-excerpt post-content">
-            
-            
-              
-            
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-            
-              <p>今天早上公司整栋楼突然停电了，没有电，没有网络。<br>趁着难得的休闲时间，把【从iOS到Apple Watch:用WatchKit创建新型可穿戴应用】给啃完了。</p>
+      
+      
+
+      
+        
+          <p>今天早上公司整栋楼突然停电了，没有电，没有网络。<br>趁着难得的休闲时间，把【从iOS到Apple Watch:用WatchKit创建新型可穿戴应用】给啃完了。</p>
 <p>这本书没有什么可评价，内容讲的很浅，适合完全不知道 Apple Watch 开发的人，让人看后心里突然明白:<br>“哦, Apple Watch 开发就是这样的啊”，就当做一本扩展见识的书。</p>
-        </div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="2019/01/29/浅谈Watch App/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://krisdeng.github.io2019/01/12/Moya + Codable/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kris">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kris的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2019/01/12/Moya + Codable/" itemprop="url">Moya + Codable</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-12T13:10:20+08:00">
+                2019-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
             
           
 
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-  </article>
-
-        
-            
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="2019/01/12/Moya + Codable/">Moya + Codable</a>
-        
-      </h1>
-
-      <time class="post-time">
-          1月 12 2019
-      </time>
-    </header>
-
-
 
     
-        <div class="post-excerpt post-content">
-            
-            
-              
-            
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-            
-              <p>终于有时间把项目中的网络层封装好好理一理了。<br>项目中用一直使用的是 Alamofire 框架，Model 映射是用 Codable框架。<br>在网络层中请求完数据后，将数据传到Model，在model层中做分析、映射。<br>接口比较多的时候，映射的代码就比较冗余。。</p>
+      
+      
+
+      
+        
+          <p>终于有时间把项目中的网络层封装好好理一理了。<br>项目中用一直使用的是 Alamofire 框架，Model 映射是用 Codable框架。<br>在网络层中请求完数据后，将数据传到Model，在model层中做分析、映射。<br>接口比较多的时候，映射的代码就比较冗余。。</p>
 <p>在GitHub上搜了下，有 Moya + Codable 自动解析+映射的方案，感觉挺酷的。</p>
-        </div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="2019/01/12/Moya + Codable/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://krisdeng.github.io2019/01/02/iPhone 多机型适配/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kris">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kris的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2019/01/02/iPhone 多机型适配/" itemprop="url">iPhone 多机型适配与Icon、Launch尺寸介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-02T18:50:10+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="categories/Apple管理/" itemprop="url" rel="index">
+                    <span itemprop="name">Apple管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
             
           
 
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-  </article>
-
-        
-            
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="2019/01/02/iPhone 多机型适配/">iPhone 多机型适配与Icon、Launch尺寸介绍</a>
-        
-      </h1>
-
-      <time class="post-time">
-          1月 02 2019
-      </time>
-    </header>
-
-
 
     
-        <div class="post-excerpt post-content">
-            
-            
-              
-            
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-            
-              <h2 id="机型适配"><a href="#机型适配" class="headerlink" title="机型适配"></a>机型适配</h2><table>
+      
+      
+
+      
+        
+          <h2 id="机型适配"><a href="#机型适配" class="headerlink" title="机型适配"></a>机型适配</h2><table>
 <thead>
 <tr>
 <th style="text-align:center">机型</th>
@@ -321,247 +966,1069 @@
 </tr>
 </tbody>
 </table>
-        </div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="2019/01/02/iPhone 多机型适配/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://krisdeng.github.io2019/01/02/iOS 证书无法生成秘钥/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kris">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kris的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2019/01/02/iOS 证书无法生成秘钥/" itemprop="url">iOS 证书无法生成秘钥</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-02T16:50:10+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="categories/Apple管理/" itemprop="url" rel="index">
+                    <span itemprop="name">Apple管理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
             
           
 
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>今天下午整理了下公司的Apple 证书，把已经不用证书<strong>Revoke</strong>。 整理好后，因为影响了其他小伙伴的程序调试工作，因此需要重新在<strong>钥匙串</strong>中导出<strong>p12</strong>文件分享给小伙伴们。结果震惊的事情发生了，证书居然没有 <strong>秘钥</strong>，无法导出<strong>p12</strong>，Why？？？！！！！</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="2019/01/02/iOS 证书无法生成秘钥/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
   </article>
 
-        
-            
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="2019/01/02/iOS 证书无法生成秘钥/">iOS 证书无法生成秘钥</a>
-        
-      </h1>
-
-      <time class="post-time">
-          1月 02 2019
-      </time>
-    </header>
-
-
 
     
-        <div class="post-excerpt post-content">
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://krisdeng.github.io2018/12/29/浅谈小程序与公众号的区别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kris">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kris的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2018/12/29/浅谈小程序与公众号的区别/" itemprop="url">浅谈小程序与公众号的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
             
-            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-29T15:50:10+08:00">
+                2018-12-29
+              </time>
             
 
             
-              <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>今天下午整理了下公司的Apple 证书，把已经不用证书<strong>Revoke</strong>。 整理好后，因为影响了其他小伙伴的程序调试工作，因此需要重新在<strong>钥匙串</strong>中导出<strong>p12</strong>文件分享给小伙伴们。结果震惊的事情发生了，证书居然没有 <strong>秘钥</strong>，无法导出<strong>p12</strong>，Why？？？！！！！</p>
-        </div>
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="categories/其他/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
             
           
 
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>今天有个朋友问我，微信上的<strong>小程序</strong>与<strong>公众号</strong>有什么区别呢？<br>咋一听有点蒙圈，虽然接触过以<strong>微信公众号</strong>基础上的企业级APP开发，也接触不少<strong>小程序</strong>的应用。<br>但是真正的说个清楚，还是需要补补课，理一理思路的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="2018/12/29/浅谈小程序与公众号的区别/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
   </article>
 
-        
-            
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="2018/12/29/浅谈小程序与公众号的区别/">浅谈小程序与公众号的区别</a>
-        
-      </h1>
-
-      <time class="post-time">
-          12月 29 2018
-      </time>
-    </header>
-
-
 
     
-        <div class="post-excerpt post-content">
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://krisdeng.github.io2018/11/05/iOS 无线调试/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kris">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kris的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2018/11/05/iOS 无线调试/" itemprop="url">iOS 无线调试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
             
-            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-05T14:16:10+08:00">
+                2018-11-05
+              </time>
             
 
             
-              <h2 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h2><p>今天有个朋友问我，微信上的<strong>小程序</strong>与<strong>公众号</strong>有什么区别呢？<br>咋一听有点蒙圈，虽然接触过以<strong>微信公众号</strong>基础上的企业级APP开发，也接触不少<strong>小程序</strong>的应用。<br>但是真正的说个清楚，还是需要补补课，理一理思路的。</p>
-        </div>
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="categories/调试/" itemprop="url" rel="index">
+                    <span itemprop="name">调试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
             
           
 
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-  </article>
-
-        
-            
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="2018/11/05/iOS 无线调试/">iOS 无线调试</a>
-        
-      </h1>
-
-      <time class="post-time">
-          11月 05 2018
-      </time>
-    </header>
-
-
 
     
-        <div class="post-excerpt post-content">
-            
-            
-              
-            
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-            
-              <p>今天在做真机调试的时候，数据线突然抽风了，时常的连接断开，非常影响工作！</p>
+      
+      
+
+      
+        
+          <p>今天在做真机调试的时候，数据线突然抽风了，时常的连接断开，非常影响工作！</p>
 <p>这时小伙伴给我介绍了一种可以不用【数据线】连接机子，直接调试的方法。。</p>
-        </div>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="2018/11/05/iOS 无线调试/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://krisdeng.github.io2018/09/29/JSONExport/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kris">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kris的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2018/09/29/JSONExport/" itemprop="url">JSONExport</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-29T11:10:10+08:00">
+                2018-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
             
           
 
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-  </article>
-
-        
-            
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="2018/09/29/JSONExport/">JSONExport</a>
-        
-      </h1>
-
-      <time class="post-time">
-          9月 29 2018
-      </time>
-    </header>
-
-
 
     
-        <div class="post-excerpt post-content">
-            
-            
-              
-            
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-            
-              <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>今天小伙伴推荐了一个非常好用的快速建Model的工具-<a href="https://github.com/Ahmed-Ali/JSONExport" target="_blank" rel="noopener">JSONExport</a><br>使用了下感觉非常棒，可以提升不少的开发效率。</p>
+      
+      
+
+      
+        
+          <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>今天小伙伴推荐了一个非常好用的快速建Model的工具-<a href="https://github.com/Ahmed-Ali/JSONExport" target="_blank" rel="noopener">JSONExport</a><br>使用了下感觉非常棒，可以提升不少的开发效率。</p>
 <hr>
 <h2 id="效果展现"><a href="#效果展现" class="headerlink" title="效果展现"></a>效果展现</h2><p>我们只需要将 Json 格式的内容拷贝到JSONExport <strong>左侧</strong>输入框中，右侧马上就将模型的数据创建好。</p>
 <p>特别酷的是，如果你是json嵌套的方式，它也可以很方便的帮你创建多个模型，如图。<br>而且他还可以支持多个语言的版本，特别方便。</p>
-        </div>
-            
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="2018/09/29/JSONExport/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
 
     
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
   </article>
 
-        
-            
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="2018/07/07/RxSwift 学习笔记-计时器/">RxSwift 学习笔记 - 计时器</a>
-        
-      </h1>
-
-      <time class="post-time">
-          7月 07 2018
-      </time>
-    </header>
-
-
 
     
-        <div class="post-excerpt post-content">
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://krisdeng.github.io2018/07/07/RxSwift 学习笔记-计时器/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kris">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kris的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2018/07/07/RxSwift 学习笔记-计时器/" itemprop="url">RxSwift 学习笔记 - 计时器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
             
-            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-07T10:15:10+08:00">
+                2018-07-07
+              </time>
             
 
             
-              <p>我们继续 RxSwift的学习，建议大家先看下<a href="https://beeth0ven.github.io/RxSwift-Chinese-Documentation/" target="_blank" rel="noopener">Swift 中文文档</a>，先弄明白RxSwift懂基本概念。</p>
-        </div>
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="categories/RxSwift/" itemprop="url" rel="index">
+                    <span itemprop="name">RxSwift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
             
           
 
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>我们继续 RxSwift的学习，建议大家先看下<a href="https://beeth0ven.github.io/RxSwift-Chinese-Documentation/" target="_blank" rel="noopener">Swift 中文文档</a>，先弄明白RxSwift懂基本概念。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="2018/07/07/RxSwift 学习笔记-计时器/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
   </article>
 
-        
-        
+
+    
+  </section>
+
+  
   <nav class="pagination">
-    
-    
-      <a class="next" href="page/2/">
-        <span class="next-text">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    
+    <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="page/4/">4</a><a class="extend next" rel="next" href="page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
-    <div id="secondary">
+  </div>
+
+  <aside id="sidebar" class="sidebar">
     
+    <div class="sidebar-inner">
 
-    
+      
 
-    
-    <section id="tags" class="widget-area widget_tags">
-        <h3 class="widget-title">Tags</h3>
-        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="tags/Apple管理/">Apple管理</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/iOS/">iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Swift/">Swift</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/设计模式/">设计模式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Carthage/">Carthage</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/OC、Swift/">OC、Swift</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Hybrid/">Hybrid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/物联网/">物联网</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/博客/">博客</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Moya/">Moya</a><span class="tag-list-count">1</span></li></ul>
-    </section>
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">kris</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
 
 
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kris</span>
+
+  
 </div>
 
 
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
       </div>
+    </footer>
 
-      <footer id="colophon"><span class="copyright-year">
     
-        &copy;
-    
-        2014 -
-    
-    2020
-    <span class="footer-author">kris.</span>
-    <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
-    </span>
-</span>
-
-      </footer>
-
-      <div class="back-to-top" id="back-to-top">
-        <i class="iconfont icon-up"></i>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
       </div>
-    </div>
     
 
-
     
 
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
 
 
 
   
-    <script type="text/javascript" src="lib/jquery/jquery-3.1.1.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
   
 
   
 
-    <script type="text/javascript" src="js/src/theme.js?v=1.1"></script>
-<script type="text/javascript" src="js/src/bootstrap.js?v=1.1"></script>
+  
 
-  </body>
+
+  <script type="text/javascript" src="js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
