@@ -1,105 +1,138 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>Kris的博客</title>
-    <link rel="stylesheet" href="../../../../css/style.css">
-    <link rel="stylesheet" href="../../../../css/gitment.css">
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
-</head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
-        </div>
-        <nav class="header-nav">
-            
-            <a href="../../../../index.html" class="header-nav-link">
-                首页
-            </a>
-            
 
-            
-            <a href="../../../../archives" class="header-nav-link">
-                归档
-            </a>
-            
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
-            
-            <a href="../../../../tags" class="header-nav-link">
-                标签
-            </a>
-            
 
-            
-            <a href="/blog/about/" class="header-nav-link">
-                关于
-            </a>
-            
-        </nav>
-    </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
-        </div>
 
-    </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="../../../../archives" class="mobile-nav-link">归档</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="../../../../tags" class="mobile-nav-link">标签</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/blog/about/" class="mobile-nav-link">关于</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">EmptyDataSet-Swift - 使用分析</h2>
-            <div class="post-meta">
-                <span class="post-time">2018-06-06</span>
+  <meta name="description" content="EmptyDataSet-Swift - 使用分析">
+
+
+
+
+  <meta name="keywords" content="设计模式,">
+
+
+
+
+
+  <link rel="alternate" href="../../../../default" title="Kris的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://krisdeng.github.io/2018/06/06/EmptyDataSet-Swift - 使用分析/">
+
+
+<meta name="description" content="最近一直想找个 Swift 版本的【空数据的时候的展位图】自动加载的代码研学习下。在网上推荐了很多，最出名的某过于DZNEmptyDataSet,但是是Objective-C版本的。幸好又有大牛翻译了DZNEmptyDataSet出了EmptyDataSet-Swift">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EmptyDataSet-Swift - 使用分析">
+<meta property="og:url" content="https://krisdeng.github.io/2018/06/06/EmptyDataSet-Swift - 使用分析/index.html">
+<meta property="og:site_name" content="Kris的博客">
+<meta property="og:description" content="最近一直想找个 Swift 版本的【空数据的时候的展位图】自动加载的代码研学习下。在网上推荐了很多，最出名的某过于DZNEmptyDataSet,但是是Objective-C版本的。幸好又有大牛翻译了DZNEmptyDataSet出了EmptyDataSet-Swift">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2018/06/06/EmptyDataSet-Swift%20-%20使用分析/7636C45D8842100419D83268E2D1998A.jpg">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2018/06/06/EmptyDataSet-Swift%20-%20使用分析/EA32D1719D6072547B1733834C024907.jpg">
+<meta property="og:updated_time" content="2019-03-15T09:03:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EmptyDataSet-Swift - 使用分析">
+<meta name="twitter:description" content="最近一直想找个 Swift 版本的【空数据的时候的展位图】自动加载的代码研学习下。在网上推荐了很多，最出名的某过于DZNEmptyDataSet,但是是Objective-C版本的。幸好又有大牛翻译了DZNEmptyDataSet出了EmptyDataSet-Swift">
+<meta name="twitter:image" content="https://krisdeng.github.io/blog/2018/06/06/EmptyDataSet-Swift%20-%20使用分析/7636C45D8842100419D83268E2D1998A.jpg">
+
+
+<link rel="stylesheet" type="text/css" href="../../../../css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> EmptyDataSet-Swift - 使用分析 - Kris的博客 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="../../../../." class="logo">Kris的博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
                 
-                <span class="post-category">
-                    
-                    <a class="category" href="../../../../categories/设计模式/">设计模式</a>
-                    
-                </span>
+                    <li class="menu-item">
+                        <a href="">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
                 
-                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
+                    <li class="menu-item">
+                        <a href="">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
 </div>
-        <div class="post-content">
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          EmptyDataSet-Swift - 使用分析
+        
+      </h1>
+
+      <time class="post-time">
+          6月 06 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
             <p>最近一直想找个 Swift 版本的【空数据的时候的展位图】自动加载的代码研学习下。<br>在网上推荐了很多，最出名的某过于<a href="https://github.com/dzenbot/DZNEmptyDataSet" target="_blank" rel="noopener">DZNEmptyDataSet</a>,但是是Objective-C版本的。<br>幸好又有大牛翻译了<code>DZNEmptyDataSet</code>出了<a href="https://github.com/Xiaoye220/EmptyDataSet-Swift" target="_blank" rel="noopener">EmptyDataSet-Swift</a></p>
 <a id="more"></a>
 <hr>
@@ -136,68 +169,87 @@
 <hr>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/dzenbot/DZNEmptyDataSet" target="_blank" rel="noopener">DZNEmptyDataSet</a><br><a href="https://github.com/Xiaoye220/EmptyDataSet-Swift" target="_blank" rel="noopener">EmptyDataSet-Swift</a><br><a href="https://www.jianshu.com/p/c493f44c74b2" target="_blank" rel="noopener">史上最全的DZNEmptyDataSet(空白页框架)说明书</a><br><a href="https://www.jianshu.com/p/3efc3e94b14c" target="_blank" rel="noopener">iOS runtime实战应用：Method Swizzling</a></p>
 
-        </div>
-        
-        <div class="post-tag">
-            
-            <a class="tag" href="../../../../tags/设计模式/" title="设计模式">设计模式</a>
-            
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
+            </div>
+          
+
     
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="../../../../tags/设计模式/">设计模式</a>
+		  
+		</div>
+		
+
         
-            <a class="prev" href="../../../07/05/面向协议思维 实现 NavigationItem 按钮的抽取/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">面向协议思维 实现 NavigationItem 按钮的抽取</span>
-                <span class="nav-mobile">上一篇</span>
-            </a>
         
-        
-            <a class="next" href="../../../05/16/Carthage的使用/">
-                <span class="nav-default">Carthage和CocoaPods简介</span>
-                <span class="nav-mobile">下一篇</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
+  <nav class="post-nav">
     
-</div>
-<div id="comment-container"></div>
+      <a class="prev" href="../../../07/05/面向协议思维 实现 NavigationItem 按钮的抽取/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">面向协议思维 实现 NavigationItem 按钮的抽取</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="../../../05/16/Carthage的使用/">
+        <span class="next-text nav-default">Carthage和CocoaPods简介</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
     </div>
-</div>
-<footer class="footer-social">
-    
 
-    
+      </div>
 
+      <footer id="colophon"><span class="copyright-year">
     
+        &copy;
+    
+        2014 -
+    
+    2020
+    <span class="footer-author">kris.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-                2017 -
-            
-            2020
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">kris</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
     </div>
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../../../../js/index.js"></script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
     
 
-</script>
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="../../../../lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="../../../../js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="../../../../js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
 </html>

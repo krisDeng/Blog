@@ -1,105 +1,135 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>Kris的博客</title>
-    <link rel="stylesheet" href="../../../../css/style.css">
-    <link rel="stylesheet" href="../../../../css/gitment.css">
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
-</head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
-        </div>
-        <nav class="header-nav">
-            
-            <a href="../../../../index.html" class="header-nav-link">
-                首页
-            </a>
-            
 
-            
-            <a href="../../../../archives" class="header-nav-link">
-                归档
-            </a>
-            
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
-            
-            <a href="../../../../tags" class="header-nav-link">
-                标签
-            </a>
-            
 
-            
-            <a href="/blog/about/" class="header-nav-link">
-                关于
-            </a>
-            
-        </nav>
-    </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
-        </div>
 
-    </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="../../../../archives" class="mobile-nav-link">归档</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="../../../../tags" class="mobile-nav-link">标签</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/blog/about/" class="mobile-nav-link">关于</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">免费、稳定的天气预报API</h2>
-            <div class="post-meta">
-                <span class="post-time">2017-01-04</span>
+  <meta name="description" content="免费、稳定的天气预报API">
+
+
+
+
+  <meta name="keywords" content="OC、Swift,">
+
+
+
+
+
+  <link rel="alternate" href="../../../../default" title="Kris的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://krisdeng.github.io/2017/01/04/免费、稳定的天气预报API/">
+
+
+<meta name="description" content="实时接口：实时天气1：http://www.weather.com.cn/data/sk/101190408.html实时天气2：http://www.weather.com.cn/data/cityinfo/101190408.html">
+<meta name="keywords" content="OC、Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="免费、稳定的天气预报API">
+<meta property="og:url" content="https://krisdeng.github.io/2017/01/04/免费、稳定的天气预报API/index.html">
+<meta property="og:site_name" content="Kris的博客">
+<meta property="og:description" content="实时接口：实时天气1：http://www.weather.com.cn/data/sk/101190408.html实时天气2：http://www.weather.com.cn/data/cityinfo/101190408.html">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-28T11:35:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="免费、稳定的天气预报API">
+<meta name="twitter:description" content="实时接口：实时天气1：http://www.weather.com.cn/data/sk/101190408.html实时天气2：http://www.weather.com.cn/data/cityinfo/101190408.html">
+
+
+<link rel="stylesheet" type="text/css" href="../../../../css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 免费、稳定的天气预报API - Kris的博客 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="../../../../." class="logo">Kris的博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
                 
-                <span class="post-category">
-                    
-                    <a class="category" href="../../../../categories/技术/">技术</a>
-                    
-                </span>
+                    <li class="menu-item">
+                        <a href="">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
                 
-                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-中国天气SmartWeatherAPI-http-smart-weather-com-cn-wzfw-smart-weatherapi-shtml"><span class="toc-text">2. 中国天气SmartWeatherAPI(http://smart.weather.com.cn/wzfw/smart/weatherapi.shtml)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-和风天气"><span class="toc-text">3. 和风天气</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-心知天气（免费版只提供地级市数据）"><span class="toc-text">4. 心知天气（免费版只提供地级市数据）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-彩云天气"><span class="toc-text">5. 彩云天气</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-中央天气预报"><span class="toc-text">6. 中央天气预报</span></a></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
+                    <li class="menu-item">
+                        <a href="">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
 </div>
-        <div class="post-content">
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          免费、稳定的天气预报API
+        
+      </h1>
+
+      <time class="post-time">
+          1月 04 2017
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
             <ol>
 <li>实时接口：<br>实时天气1：<a href="https://link.jianshu.com/?t=http://www.weather.com.cn/data/sk/101190408.html" target="_blank" rel="noopener">http://www.weather.com.cn/data/sk/101190408.html</a><br>实时天气2：<a href="https://link.jianshu.com/?t=http://www.weather.com.cn/data/cityinfo/101190408.html" target="_blank" rel="noopener">http://www.weather.com.cn/data/cityinfo/101190408.html</a></li>
 </ol>
@@ -152,68 +182,87 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">status：成功时返回 OK</span><br><span class="line">hourly：具体小时天气信息列表</span><br><span class="line">    text：天气状况</span><br><span class="line">    code：请参考 [code 细节]</span><br><span class="line">    temperature：温度</span><br><span class="line">    time：时间</span><br></pre></td></tr></table></figure>
 <p>另 ，code细节</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">/// 晴</span><br><span class="line">case sunny = 0</span><br><span class="line">/// 晴</span><br><span class="line">case clear = 1</span><br><span class="line">/// 晴</span><br><span class="line">case fair1 = 2</span><br><span class="line">/// 晴</span><br><span class="line">case fair2 = 3</span><br><span class="line"></span><br><span class="line">/// 多云</span><br><span class="line">case cloudy = 4</span><br><span class="line">/// 晴间多云</span><br><span class="line">case partlyCloudy1 = 5</span><br><span class="line">/// 晴间多云</span><br><span class="line">case partlyCloudy2 = 6</span><br><span class="line">/// 大部多云</span><br><span class="line">case mostlyCloudy1 = 7</span><br><span class="line">/// 大部多云</span><br><span class="line">case mostlyCloudy2 = 8</span><br><span class="line"></span><br><span class="line">/// 阴</span><br><span class="line">case overcast = 9</span><br><span class="line">/// 阵雨</span><br><span class="line">case shower = 10</span><br><span class="line">/// 雷阵雨</span><br><span class="line">case thundershower = 11</span><br><span class="line">/// 雷阵雨伴有冰雹</span><br><span class="line">case thundershowerWithHail = 12</span><br><span class="line">/// 小雨</span><br><span class="line">case lightRain = 13</span><br><span class="line">/// 中雨</span><br><span class="line">case moderateRain = 14</span><br><span class="line">/// 大雨</span><br><span class="line">case heavyRain = 15</span><br><span class="line">/// 暴雨</span><br><span class="line">case storm = 16</span><br><span class="line">/// 大暴雨</span><br><span class="line">case heavyStorm = 17</span><br><span class="line">/// 特大暴雨</span><br><span class="line">case severeStorm = 18</span><br><span class="line"></span><br><span class="line">/// 冻雨</span><br><span class="line">case iceRain = 19</span><br><span class="line">/// 雨夹雪</span><br><span class="line">case sleet = 20</span><br><span class="line">/// 阵雪</span><br><span class="line">case snowFlurry = 21</span><br><span class="line">/// 小雪</span><br><span class="line">case lightSnow = 22</span><br><span class="line">/// 中雪</span><br><span class="line">case moderateSnow = 23</span><br><span class="line">/// 大雪</span><br><span class="line">case heavySnow = 24</span><br><span class="line">/// 暴雪</span><br><span class="line">case snowstorm = 25</span><br><span class="line"></span><br><span class="line">/// 浮尘</span><br><span class="line">case dust = 26</span><br><span class="line">/// 扬沙</span><br><span class="line">case sand = 27</span><br><span class="line">/// 沙尘暴</span><br><span class="line">case duststorm = 28</span><br><span class="line">/// 强沙尘暴</span><br><span class="line">case sandstorm = 29</span><br><span class="line">/// 雾</span><br><span class="line">case foggy = 30</span><br><span class="line">/// 霾</span><br><span class="line">case haze = 31</span><br><span class="line">/// 风</span><br><span class="line">case windy = 32</span><br><span class="line">/// 大风</span><br><span class="line">case blustery = 33</span><br><span class="line">/// 飓风</span><br><span class="line">case hurricane = 34</span><br><span class="line">/// 热带风暴</span><br><span class="line">case tropicalStorm = 35</span><br><span class="line">/// 龙卷风</span><br><span class="line">case tornado = 36</span><br><span class="line"></span><br><span class="line">/// 冷</span><br><span class="line">case cold = 37</span><br><span class="line">/// 热</span><br><span class="line">case hot = 38</span><br><span class="line"></span><br><span class="line">/// 未知</span><br><span class="line">case unknown = 99</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        <div class="post-tag">
-            
-            <a class="tag" href="../../../../tags/OC、Swift/" title="OC、Swift">OC、Swift</a>
-            
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
+            </div>
+          
+
     
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="../../../../tags/OC、Swift/">OC、Swift</a>
+		  
+		</div>
+		
+
         
-            <a class="prev" href="../../../04/02/最新苹果官方联系方式汇总/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">最新苹果官方联系方式汇总</span>
-                <span class="nav-mobile">上一篇</span>
-            </a>
         
-        
-            <a class="next" href="../../02/MacOS下搭建博客/">
-                <span class="nav-default">GitHub Pages + Hexo</span>
-                <span class="nav-mobile">下一篇</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
+  <nav class="post-nav">
     
-</div>
-<div id="comment-container"></div>
+      <a class="prev" href="../../../04/02/最新苹果官方联系方式汇总/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">最新苹果官方联系方式汇总</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="../../02/iOS 推送原理/">
+        <span class="next-text nav-default">iOS 推送原理</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
     </div>
-</div>
-<footer class="footer-social">
-    
 
-    
+      </div>
 
+      <footer id="colophon"><span class="copyright-year">
     
+        &copy;
+    
+        2014 -
+    
+    2020
+    <span class="footer-author">kris.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-                2017 -
-            
-            2020
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">kris</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
     </div>
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../../../../js/index.js"></script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
     
 
-</script>
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="../../../../lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="../../../../js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="../../../../js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
 </html>

@@ -1,105 +1,142 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>Kris的博客</title>
-    <link rel="stylesheet" href="../../../../css/style.css">
-    <link rel="stylesheet" href="../../../../css/gitment.css">
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
-</head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
-        </div>
-        <nav class="header-nav">
-            
-            <a href="../../../../index.html" class="header-nav-link">
-                首页
-            </a>
-            
 
-            
-            <a href="../../../../archives" class="header-nav-link">
-                归档
-            </a>
-            
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
-            
-            <a href="../../../../tags" class="header-nav-link">
-                标签
-            </a>
-            
 
-            
-            <a href="/blog/about/" class="header-nav-link">
-                关于
-            </a>
-            
-        </nav>
-    </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
-        </div>
 
-    </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="../../../../archives" class="mobile-nav-link">归档</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="../../../../tags" class="mobile-nav-link">标签</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/blog/about/" class="mobile-nav-link">关于</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">代码规范--- SwiftLint</h2>
-            <div class="post-meta">
-                <span class="post-time">2017-06-02</span>
+  <meta name="description" content="代码规范--- SwiftLint">
+
+
+
+
+  <meta name="keywords" content="Apple管理,">
+
+
+
+
+
+  <link rel="alternate" href="../../../../default" title="Kris的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://krisdeng.github.io/2017/06/02/Xcode代码规范之SwiftLint配置/">
+
+
+<meta name="description" content="新的项目开始，团队成员逐渐的增多，靠人为的方式去遵守代码规范，已经不怎么靠谱，因此希望增加一个自动化的检测代码规范工具。 SwiftLint是对Swift语言进行代码规范强制检查的工具，针对规范的违反程度显示warning或error。SwiftLint工作在本地，所以需要安装对应的软件。">
+<meta name="keywords" content="Apple管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码规范--- SwiftLint">
+<meta property="og:url" content="https://krisdeng.github.io/2017/06/02/Xcode代码规范之SwiftLint配置/index.html">
+<meta property="og:site_name" content="Kris的博客">
+<meta property="og:description" content="新的项目开始，团队成员逐渐的增多，靠人为的方式去遵守代码规范，已经不怎么靠谱，因此希望增加一个自动化的检测代码规范工具。 SwiftLint是对Swift语言进行代码规范强制检查的工具，针对规范的违反程度显示warning或error。SwiftLint工作在本地，所以需要安装对应的软件。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2017/06/02/Xcode代码规范之SwiftLint配置/2214124503EEFE61B036F61A9C28A2A2.png">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2017/06/02/Xcode代码规范之SwiftLint配置/40F293A4C11AE27AACFA61ADE8130D3B.png">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2017/06/02/Xcode代码规范之SwiftLint配置/D3B4C261401FF681D889BC80D653AF82.png">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2017/06/02/Xcode代码规范之SwiftLint配置/40ABCF87800BDB19D3752376348E7617.png">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2017/06/02/Xcode代码规范之SwiftLint配置/C2A8A1439A9683D08032A17351FC9245.png">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2017/06/02/Xcode代码规范之SwiftLint配置/C21EEC4EEEB1392DDA393A366D26A343.png">
+<meta property="og:updated_time" content="2019-01-03T12:12:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="代码规范--- SwiftLint">
+<meta name="twitter:description" content="新的项目开始，团队成员逐渐的增多，靠人为的方式去遵守代码规范，已经不怎么靠谱，因此希望增加一个自动化的检测代码规范工具。 SwiftLint是对Swift语言进行代码规范强制检查的工具，针对规范的违反程度显示warning或error。SwiftLint工作在本地，所以需要安装对应的软件。">
+<meta name="twitter:image" content="https://krisdeng.github.io/blog/2017/06/02/Xcode代码规范之SwiftLint配置/2214124503EEFE61B036F61A9C28A2A2.png">
+
+
+<link rel="stylesheet" type="text/css" href="../../../../css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 代码规范--- SwiftLint - Kris的博客 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="../../../../." class="logo">Kris的博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
                 
-                <span class="post-category">
-                    
-                    <a class="category" href="../../../../categories/管理/">管理</a>
-                    
-                </span>
+                    <li class="menu-item">
+                        <a href="">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
                 
-                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-安装SwiftLint"><span class="toc-text">一. 安装SwiftLint</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装全局配置-Homebrew-安装"><span class="toc-text">1. 安装全局配置(Homebrew 安装)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Homebrew"><span class="toc-text">Homebrew</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装成功-如下图所示"><span class="toc-text">安装成功,如下图所示:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-使用-CocoaPods-安装"><span class="toc-text">2. 使用 CocoaPods 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用安装包"><span class="toc-text">3. 使用安装包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-查看SwiftLint的全部命令"><span class="toc-text">二. 查看SwiftLint的全部命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-SwiftLint的使用"><span class="toc-text">三. SwiftLint的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-自定义配置"><span class="toc-text">四. 自定义配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建配置文件"><span class="toc-text">1. 创建配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-在代码中关闭某个规则"><span class="toc-text">2. 在代码中关闭某个规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-忽略引入的第三方库"><span class="toc-text">3. 忽略引入的第三方库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-嵌套配置"><span class="toc-text">4. 嵌套配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-自动更正"><span class="toc-text">5. 自动更正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-最后贴上官方示例"><span class="toc-text">五. 最后贴上官方示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附录"><span class="toc-text">附录:</span></a></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
+                    <li class="menu-item">
+                        <a href="">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
 </div>
-        <div class="post-content">
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          代码规范--- SwiftLint
+        
+      </h1>
+
+      <time class="post-time">
+          6月 02 2017
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
             <p>新的项目开始，团队成员逐渐的增多，靠人为的方式去遵守代码规范，已经不怎么靠谱，因此希望增加一个自动化的检测代码规范工具。</p>
 <p>SwiftLint是对Swift语言进行代码规范强制检查的工具，针对规范的违反程度显示warning或error。SwiftLint工作在本地，所以需要安装对应的软件。</p>
 <a id="more"></a>
@@ -229,68 +266,87 @@
 <h2 id="五-最后贴上官方示例"><a href="#五-最后贴上官方示例" class="headerlink" title="五. 最后贴上官方示例"></a>五. 最后贴上官方示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">disabled_rules: \# 执行时排除掉的规则</span><br><span class="line">  - colon</span><br><span class="line">  - comma</span><br><span class="line">  - control_statement</span><br><span class="line">opt_in_rules: \# 一些规则仅仅是可选的</span><br><span class="line">  - empty_count</span><br><span class="line">  - missing_docs</span><br><span class="line">  \# 可以通过执行如下指令来查找所有可用的规则:</span><br><span class="line">  \# swiftlint rules</span><br><span class="line">included: \# 执行 linting 时包含的路径。如果出现这个 `--path` 会被忽略。</span><br><span class="line">  - Source</span><br><span class="line">excluded: \# 执行 linting 时忽略的路径。 优先级比 `included` 更高。</span><br><span class="line">  - Carthage</span><br><span class="line">  - Pods</span><br><span class="line">  - Source/ExcludedFolder</span><br><span class="line">  - Source/ExcludedFile.swift</span><br><span class="line"></span><br><span class="line">\# 可配置的规则可以通过这个配置文件来自定义</span><br><span class="line">\# 二进制规则可以设置他们的严格程度</span><br><span class="line">force_cast: warning \# 隐式</span><br><span class="line">force_try:</span><br><span class="line">  severity: warning \# 显式</span><br><span class="line">\# 同时有警告和错误等级的规则，可以只设置它的警告等级</span><br><span class="line">\# 隐式</span><br><span class="line">line_length: 110</span><br><span class="line">\# 可以通过一个数组同时进行隐式设置</span><br><span class="line">type_body_length:</span><br><span class="line">  - 300 \# warning</span><br><span class="line">  - 400 \# error</span><br><span class="line">\# 或者也可以同时进行显式设置</span><br><span class="line">file_length:</span><br><span class="line">  warning: 500</span><br><span class="line">  error: 1200</span><br><span class="line">\# 命名规则可以设置最小长度和最大程度的警告/错误</span><br><span class="line">\# 此外它们也可以设置排除在外的名字</span><br><span class="line">type_name:</span><br><span class="line">  min_length: 4 \# 只是警告</span><br><span class="line">  max_length: \# 警告和错误</span><br><span class="line">    warning: 40</span><br><span class="line">    error: 50</span><br><span class="line">  excluded: iPhone \# 排除某个名字</span><br><span class="line">variable_name:</span><br><span class="line">  min_length: \# 只有最小长度</span><br><span class="line">    error: 4 \# 只有错误</span><br><span class="line">  excluded: \# 排除某些名字</span><br><span class="line">    - id</span><br><span class="line">    - URL</span><br><span class="line">    - GlobalAPIKey</span><br><span class="line">reporter: &quot;xcode&quot; \# 报告类型 (xcode, json, csv, checkstyle)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 <h2 id="附录"><a href="#附录" class="headerlink" title="附录:"></a>附录:</h2><p><a href="https://github.com/realm/SwiftLint/blob/master/README.md" target="_blank" rel="noopener">原文链接</a><br><a href="https://github.com/realm/SwiftLint/blob/master/README\_CN.md" target="_blank" rel="noopener">译文链接</a><br><a href="https://link.juejin.im?target=https%253A%252F%252Fgithub.com%252Fgithub%252Fswift-style-guide" target="_blank" rel="noopener">Github 公布的 Swift 代码规范–原文</a><br><a href="https://link.juejin.im?target=https%253A%252F%252Fgithub.com%252FArtwalk%252Fswift-style-guide%252Fblob%252Fmaster%252FREADME_CN.md" target="_blank" rel="noopener">Github 公布的 Swift 代码规范–中文</a></p>
 
-        </div>
-        
-        <div class="post-tag">
-            
-            <a class="tag" href="../../../../tags/Apple管理/" title="Apple管理">Apple管理</a>
-            
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
+            </div>
+          
+
     
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="../../../../tags/Apple管理/">Apple管理</a>
+		  
+		</div>
+		
+
         
-            <a class="prev" href="../../03/SwiftLint使用/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">SwiftLint使用</span>
-                <span class="nav-mobile">上一篇</span>
-            </a>
         
-        
-            <a class="next" href="../../../05/26/iOS 获取系统wifi列表/">
-                <span class="nav-default">iOS 获取系统wifi列表</span>
-                <span class="nav-mobile">下一篇</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
+  <nav class="post-nav">
     
-</div>
-<div id="comment-container"></div>
+      <a class="prev" href="../../03/SwiftLint使用/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">SwiftLint使用</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="../../../05/26/iOS 获取系统wifi列表/">
+        <span class="next-text nav-default">iOS 获取系统wifi列表</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
     </div>
-</div>
-<footer class="footer-social">
-    
 
-    
+      </div>
 
+      <footer id="colophon"><span class="copyright-year">
     
+        &copy;
+    
+        2014 -
+    
+    2020
+    <span class="footer-author">kris.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-                2017 -
-            
-            2020
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">kris</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
     </div>
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../../../../js/index.js"></script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
     
 
-</script>
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="../../../../lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="../../../../js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="../../../../js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
 </html>

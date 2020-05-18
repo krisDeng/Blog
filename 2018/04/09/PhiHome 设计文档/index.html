@@ -1,105 +1,139 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>Kris的博客</title>
-    <link rel="stylesheet" href="../../../../css/style.css">
-    <link rel="stylesheet" href="../../../../css/gitment.css">
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
-</head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
-        </div>
-        <nav class="header-nav">
-            
-            <a href="../../../../index.html" class="header-nav-link">
-                首页
-            </a>
-            
 
-            
-            <a href="../../../../archives" class="header-nav-link">
-                归档
-            </a>
-            
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
-            
-            <a href="../../../../tags" class="header-nav-link">
-                标签
-            </a>
-            
 
-            
-            <a href="/blog/about/" class="header-nav-link">
-                关于
-            </a>
-            
-        </nav>
-    </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
-        </div>
 
-    </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="../../../../archives" class="mobile-nav-link">归档</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="../../../../tags" class="mobile-nav-link">标签</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/blog/about/" class="mobile-nav-link">关于</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">PhiHome 设计文档</h2>
-            <div class="post-meta">
-                <span class="post-time">2018-04-09</span>
+  <meta name="description" content="PhiHome 设计文档">
+
+
+
+
+  <meta name="keywords" content="物联网,">
+
+
+
+
+
+  <link rel="alternate" href="../../../../default" title="Kris的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://krisdeng.github.io/2018/04/09/PhiHome 设计文档/">
+
+
+<meta name="description" content="背景介绍=========================================================================================================================== PhiHome项目是公司智慧家庭战略中控制所有智能家居设备的中枢，致力于将其打造成一个类似米家、京东微联的App。初期它接入的是公司自己的智能插">
+<meta name="keywords" content="物联网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PhiHome 设计文档">
+<meta property="og:url" content="https://krisdeng.github.io/2018/04/09/PhiHome 设计文档/index.html">
+<meta property="og:site_name" content="Kris的博客">
+<meta property="og:description" content="背景介绍=========================================================================================================================== PhiHome项目是公司智慧家庭战略中控制所有智能家居设备的中枢，致力于将其打造成一个类似米家、京东微联的App。初期它接入的是公司自己的智能插">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2018/04/09/PhiHome%20设计文档/E07152FA95AF248D6CC21881843F32A9.png">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2018/04/09/PhiHome%20设计文档/CFE28AAF2868A3980706B9EFF8C1C41D.png">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2018/04/09/PhiHome%20设计文档/B15159566632EFC555E1F7E18FC7F763.png">
+<meta property="og:updated_time" content="2019-02-19T03:23:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PhiHome 设计文档">
+<meta name="twitter:description" content="背景介绍=========================================================================================================================== PhiHome项目是公司智慧家庭战略中控制所有智能家居设备的中枢，致力于将其打造成一个类似米家、京东微联的App。初期它接入的是公司自己的智能插">
+<meta name="twitter:image" content="https://krisdeng.github.io/blog/2018/04/09/PhiHome%20设计文档/E07152FA95AF248D6CC21881843F32A9.png">
+
+
+<link rel="stylesheet" type="text/css" href="../../../../css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> PhiHome 设计文档 - Kris的博客 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="../../../../." class="logo">Kris的博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
                 
-                <span class="post-category">
-                    
-                    <a class="category" href="../../../../categories/物联网/">物联网</a>
-                    
-                </span>
+                    <li class="menu-item">
+                        <a href="">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
                 
-                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景介绍"><span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#术语"><span class="toc-text">术语</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#总体设计"><span class="toc-text">总体设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#App控制与交互"><span class="toc-text">App控制与交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设备"><span class="toc-text">设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设备入网-WiFi"><span class="toc-text">设备入网(WiFi)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SoftAP配网"><span class="toc-text">SoftAP配网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#局域网发现"><span class="toc-text">局域网发现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设备认证方式"><span class="toc-text">设备认证方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DeviceID生成算法"><span class="toc-text">DeviceID生成算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#App模块设计"><span class="toc-text">App模块设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JSBridge"><span class="toc-text">JSBridge</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加设备"><span class="toc-text">添加设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二维码映射机制从服务器获取"><span class="toc-text">二维码映射机制从服务器获取</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#家庭与房间"><span class="toc-text">家庭与房间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后台与服务器"><span class="toc-text">后台与服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#App-设备与后台交互流程"><span class="toc-text">App/设备与后台交互流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#离线不可控项目的交互流程"><span class="toc-text">离线不可控项目的交互流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MQTT服务质量"><span class="toc-text">MQTT服务质量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设备Shadow"><span class="toc-text">设备Shadow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shadow文档格式"><span class="toc-text">Shadow文档格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MQTT-Topic"><span class="toc-text">MQTT Topic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RESTful-API"><span class="toc-text">RESTful API</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Passthrough机制"><span class="toc-text">Passthrough机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插件机制-lt-待完善"><span class="toc-text">插件机制\&lt;待完善&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后台HTTP接口"><span class="toc-text">后台HTTP接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间同步机制"><span class="toc-text">时间同步机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#消息推送"><span class="toc-text">消息推送</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#推送机制"><span class="toc-text">推送机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后台管理系统"><span class="toc-text">后台管理系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
-</li></div>
-        <div class="post-content">
+                    <li class="menu-item">
+                        <a href="">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          PhiHome 设计文档
+        
+      </h1>
+
+      <time class="post-time">
+          4月 09 2018
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
             <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>===========================================================================================================================</p>
 <p>PhiHome项目是公司智慧家庭战略中控制所有智能家居设备的中枢，致力于将其打造成一个类似米家、京东微联的App。初期它接入的是公司自己的智能插排、全屋路由、智能音箱等产品，后续有可能开放给第三方厂商。</p>
 <a id="more"></a>
@@ -399,68 +433,87 @@
 </ul>
 <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>该文档属于公司的技术方案解决文档，因为公司已倒闭，已经不存在保密问题。所以该文档属于记录保存着，供自己的以后回顾与学习使用。</p>
 
-        </div>
-        
-        <div class="post-tag">
-            
-            <a class="tag" href="../../../../tags/物联网/" title="物联网">物联网</a>
-            
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
+            </div>
+          
+
     
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="../../../../tags/物联网/">物联网</a>
+		  
+		</div>
+		
+
         
-            <a class="prev" href="../../../05/02/获取cell或者cell中的控件在屏幕中的位置/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">获取cell或者cell中的控件在屏幕中的位置</span>
-                <span class="nav-mobile">上一篇</span>
-            </a>
         
-        
-            <a class="next" href="../../../03/06/iOS 通俗的理解：通知模式、代理模式、面向协议开发/">
-                <span class="nav-default">iOS 通俗的理解：通知模式、代理模式、面向协议开发</span>
-                <span class="nav-mobile">下一篇</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
+  <nav class="post-nav">
     
-</div>
-<div id="comment-container"></div>
+      <a class="prev" href="../../../05/02/获取cell或者cell中的控件在屏幕中的位置/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">获取cell或者cell中的控件在屏幕中的位置</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="../../../03/06/iOS 通俗的理解：通知模式、代理模式、面向协议开发/">
+        <span class="next-text nav-default">iOS 通俗的理解：通知模式、代理模式、面向协议开发</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
     </div>
-</div>
-<footer class="footer-social">
-    
 
-    
+      </div>
 
+      <footer id="colophon"><span class="copyright-year">
     
+        &copy;
+    
+        2014 -
+    
+    2020
+    <span class="footer-author">kris.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-                2017 -
-            
-            2020
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">kris</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
     </div>
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../../../../js/index.js"></script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
     
 
-</script>
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="../../../../lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="../../../../js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="../../../../js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
 </html>

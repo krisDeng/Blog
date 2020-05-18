@@ -1,105 +1,139 @@
 <!DOCTYPE html>
-<html>
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <title>Kris的博客</title>
-    <link rel="stylesheet" href="../../../../css/style.css">
-    <link rel="stylesheet" href="../../../../css/gitment.css">
-    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
-</head>
-<body>
-<header class="header">
-    <div class="header-inner">
-        <div class="header-title">
+<html lang="zh-CN">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
 
-        </div>
-        <nav class="header-nav">
-            
-            <a href="../../../../index.html" class="header-nav-link">
-                首页
-            </a>
-            
 
-            
-            <a href="../../../../archives" class="header-nav-link">
-                归档
-            </a>
-            
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
-            
-            <a href="../../../../tags" class="header-nav-link">
-                标签
-            </a>
-            
 
-            
-            <a href="/blog/about/" class="header-nav-link">
-                关于
-            </a>
-            
-        </nav>
-    </div>
-</header>
-<header class="mobile-header">
-    <div class="mobile-nav">
-        <div class="mobile-nav-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="mobile-nav-title">
-            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
-        </div>
 
-    </div>
-    <nav class="mobile-menu">
-        <ul class="mobile-menu-list">
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-home"></i>
-                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-archive"></i>
-                <a href="../../../../archives" class="mobile-nav-link">归档</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-tag"></i>
-                <a href="../../../../tags" class="mobile-nav-link">标签</a>
-            </li>
-            <li class="mobile-menu-item">
-                <i class="iconfont icon-about"></i>
-                <a href="/blog/about/" class="mobile-nav-link">关于</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<div class="main">
-    <div class="content-inner">
-        <div class="posts">
-    <article class="post-whole">
-        <div class="post-title">
-            <h2 class="title">Runtime详解</h2>
-            <div class="post-meta">
-                <span class="post-time">2017-04-02</span>
+  <meta name="description" content="Runtime详解">
+
+
+
+
+  <meta name="keywords" content="OC,">
+
+
+
+
+
+  <link rel="alternate" href="../../../../default" title="Kris的博客">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="https://krisdeng.github.io/2017/04/02/iOS Runtime详解/">
+
+
+<meta name="description" content="Runtime的特性主要是消息(方法)传递，如果消息(方法)在对象中找不到，就进行转发，具体怎 实现的呢。我们从下面几个方面探寻Runtime的实现机制。  Runtime介绍 Runtime消息传递 Runtime消息转发 Runtime应用  Runtime介绍 Objective-C 扩展了 C 语言，并加入了面向对象特性和 Smalltalk 式的消息传递机制。而这个扩展的核心是一个用 C">
+<meta name="keywords" content="OC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Runtime详解">
+<meta property="og:url" content="https://krisdeng.github.io/2017/04/02/iOS Runtime详解/index.html">
+<meta property="og:site_name" content="Kris的博客">
+<meta property="og:description" content="Runtime的特性主要是消息(方法)传递，如果消息(方法)在对象中找不到，就进行转发，具体怎 实现的呢。我们从下面几个方面探寻Runtime的实现机制。  Runtime介绍 Runtime消息传递 Runtime消息转发 Runtime应用  Runtime介绍 Objective-C 扩展了 C 语言，并加入了面向对象特性和 Smalltalk 式的消息传递机制。而这个扩展的核心是一个用 C">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2017/04/02/iOS%20Runtime详解/17C0F01ED5C56F30611FEEB2491DE2CC.png%20=609x468">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2017/04/02/iOS%20Runtime详解/4C04958AF33716F92B297CBB763A370F.png%20=1039x562">
+<meta property="og:image" content="https://krisdeng.github.io/blog/2017/04/02/iOS%20Runtime详解/644998BA10BB0EDEEDCCE9746342D633.png%20=581x393">
+<meta property="og:updated_time" content="2018-12-28T12:28:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Runtime详解">
+<meta name="twitter:description" content="Runtime的特性主要是消息(方法)传递，如果消息(方法)在对象中找不到，就进行转发，具体怎 实现的呢。我们从下面几个方面探寻Runtime的实现机制。  Runtime介绍 Runtime消息传递 Runtime消息转发 Runtime应用  Runtime介绍 Objective-C 扩展了 C 语言，并加入了面向对象特性和 Smalltalk 式的消息传递机制。而这个扩展的核心是一个用 C">
+<meta name="twitter:image" content="https://krisdeng.github.io/blog/2017/04/02/iOS%20Runtime详解/17C0F01ED5C56F30611FEEB2491DE2CC.png%20=609x468">
+
+
+<link rel="stylesheet" type="text/css" href="../../../../css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Runtime详解 - Kris的博客 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="../../../../." class="logo">Kris的博客</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
                 
-                <span class="post-category">
-                    
-                    <a class="category" href="../../../../categories/技术/">技术</a>
-                    
-                </span>
+                    <li class="menu-item">
+                        <a href="">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
                 
-                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
-            </div>
-        </div>
-        <div class="post-toc" id="post-toc">
-    <strong class="post-toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Runtime介绍"><span class="toc-text">Runtime介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Runtime消息传递"><span class="toc-text">Runtime消息传递</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#类对象-objc-class"><span class="toc-text">类对象(objc_class)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实例-objc-object"><span class="toc-text">实例(objc_object)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元类-Meta-Class"><span class="toc-text">元类(Meta Class)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Method-objc-method"><span class="toc-text">Method(objc_method)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SEL-objc-selector"><span class="toc-text">SEL(objc_selector)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IMP"><span class="toc-text">IMP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类缓存-objc-cache"><span class="toc-text">类缓存(objc_cache)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Category-objc-category"><span class="toc-text">Category(objc_category)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Runtime消息转发"><span class="toc-text">Runtime消息转发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#动态方法解析"><span class="toc-text">动态方法解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#备用接收者"><span class="toc-text">备用接收者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#完整消息转发"><span class="toc-text">完整消息转发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Runtime应用"><span class="toc-text">Runtime应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关联对象-Objective-C-Associated-Objects-给分类增加属性"><span class="toc-text">关联对象(Objective-C Associated Objects)给分类增加属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法魔法-Method-Swizzling-方法添加和替换和KVO实现"><span class="toc-text">方法魔法(Method Swizzling)方法添加和替换和KVO实现</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#方法添加"><span class="toc-text">方法添加</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方法替换"><span class="toc-text">方法替换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#KVO实现"><span class="toc-text">KVO实现</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消息转发-热更新-解决Bug-JSPatch"><span class="toc-text">消息转发(热更新)解决Bug(JSPatch)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现NSCoding的自动归档和自动解档"><span class="toc-text">实现NSCoding的自动归档和自动解档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现字典和模型的自动转换-MJExtension"><span class="toc-text">实现字典和模型的自动转换(MJExtension)</span></a></li></ol></li></ol>
-    <div class="back-to-top" id="back-to-top">
-        <a href="javascript:void(0);">回到顶部</a>
-    </div>
+                    <li class="menu-item">
+                        <a href="">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
 </div>
-        <div class="post-content">
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Runtime详解
+        
+      </h1>
+
+      <time class="post-time">
+          4月 02 2017
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
             <p>Runtime的特性主要是消息(<code>方法</code>)传递，如果消息(<code>方法</code>)在对象中找不到，就进行转发，具体怎</p>
 <p>实现的呢。我们从下面几个方面探寻Runtime的实现机制。</p>
 <ul>
@@ -303,68 +337,87 @@
 <hr>
 <p>##链接<br><a href="https://www.jianshu.com/p/6ebda3cd8052" target="_blank" rel="noopener">原文链接</a></p>
 
-        </div>
-        
-        <div class="post-tag">
-            
-            <a class="tag" href="../../../../tags/OC/" title="OC">OC</a>
-            
-        </div>
-        
-    </article>
-</div>
-<div class="paginator">
+            </div>
+          
+
     
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="../../../../tags/OC/">OC</a>
+		  
+		</div>
+		
+
         
-            <a class="prev" href="../../12/Swift代码规范/">
-                <i class="iconfont icon-prev"></i>
-                <span class="nav-default">Swift代码规范</span>
-                <span class="nav-mobile">上一篇</span>
-            </a>
         
-        
-            <a class="next" href="../最新苹果官方联系方式汇总/">
-                <span class="nav-default">最新苹果官方联系方式汇总</span>
-                <span class="nav-mobile">下一篇</span>
-                <i class="iconfont icon-next"></i>
-            </a>
-        
+  <nav class="post-nav">
     
-</div>
-<div id="comment-container"></div>
+      <a class="prev" href="../../12/Swift代码规范/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Swift代码规范</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="../最新苹果官方联系方式汇总/">
+        <span class="next-text nav-default">最新苹果官方联系方式汇总</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
     </div>
-</div>
-<footer class="footer-social">
-    
 
-    
+      </div>
 
+      <footer id="colophon"><span class="copyright-year">
     
+        &copy;
+    
+        2014 -
+    
+    2020
+    <span class="footer-author">kris.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
 
-    <div class="footer-copyright">
-        <p class="time-line">
-            &copy;
-            
-            
-                2017 -
-            
-            2020
-            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
-            <a target="_blank" href="https://github.com/iJinxin">kris</a>
-        </p>
-        <p class="theme-info">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
-            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
-        </p>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
     </div>
-</footer>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../../../../js/index.js"></script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
     
 
-</script>
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="../../../../lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="../../../../js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="../../../../js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
 </html>
