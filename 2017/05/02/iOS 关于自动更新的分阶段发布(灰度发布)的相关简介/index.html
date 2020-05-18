@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">iOS 关于自动更新的分阶段发布(灰度发布)的相关简介</h2>
+            <div class="post-meta">
+                <span class="post-time">2017-05-02</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/管理/">管理</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>背景：</p>
+<p>AppStore 发布应用方式除了自动和手动，如今添加了分阶段发布（灰度发布）。目的很明确，降低新版本骤然上升的bug率，不能挽回，只能发布新版本的风险。也也是针对禁止使用热修复，推出的相对合理的解决方案吧。</p>
+<p><strong>说明：</strong></p>
+<p>好多人觉得分阶段发布会不会影响发布更新周期？</p>
+<p>这里，苹果也有很严谨的解释说明：</p>
+<p><strong>通过自动更新的分阶段发布，您可以在 7 天内依序向已打开自动更新的用户发布此更新。</strong></p>
+<p><strong>请注意，所有用户仍可从 App Store 手动更新至此版本。您可最多暂停分阶段发布 30 天，或随时向所有用户发布此更新</strong></p>
+<a id="more"></a>
+<p><strong>一、关于自动更新分阶段发布的一些说明</strong></p>
+<p>1.启动后，版本更新将会在一个 7 天的时间段内按百分比发布给已打开自动更新的 iOS 用户。<br>2.在分阶段发布期间每天完成自动更新的用户的百分比将显示在iTunes Connect中。<br>3.所有老用户仍然可以直接从App Store手动更新应用，而新客户将始终看到最新版本。<br>4.如果发现版本更新中发现有问题，可以随时暂停分阶段发布，总共最多30天，而不管暂停次数。版本更新暂停超过30天后，发布将在暂停的那一天恢复，将无法再次暂停发行。<br>5.在分阶段发布期间中，也可停止发布阶段性的应用，选择发布给所有已打开自动更新的用户。<br>6.分阶段发布不能选择特定的人群（如年龄、性别，领域或设备信息，如操作系统版本或设备类型），为随机选择。<br>7.在分阶段发布期间，开启自动更新的用户完成自动更新，用户不会受到通知。</p>
+<p><strong>二、自动更新的分阶段发布的步骤</strong><br>1.从iTunes Connect 主页，单击我的应用程序，然后选择您的应用程序。<br>2.在左侧列中，点击要提交的应用版本。<br>3.在“自动更新的分阶段发布”部分中，选择使用分阶段发布的7天内的“发布更新”。<br>4.单击保存。</p>
+<p><strong>三、在分阶段发布期间每天完成自动更新的用户百分比如下，百分比为固定的，不可更改。</strong></p>
+<p><strong>随时关注bug率和用户反馈， 如没有什么不可抗问题，随时根据需求面向所有用户发布</strong></p>
+<p><img src="/blog/2017/05/02/iOS 关于自动更新的分阶段发布(灰度发布)的相关简介/827C7E2A84EFA86E5E2B8892A2AFCB09.png" alt=""></p>
+<p><strong>四、自动更新的分阶段发布的利弊</strong><br>利：<br>1.发现新问题，可及时暂停分阶段发布，将损失降到最低。<br>2.加速产品的发布进程，减少测试周期。<br>弊：<br>1.只能选择老用户更新时的灰度，也就是说新用户安装的都是新版。<br>2.在群体的选择上是随机的，抽到的用户不能代表全局用户特征，统计误差不定，有可能很大，也有可能很小。<br>3.灰度发布的新版本一旦出现问题是无法回滚的，在修复版开发完成重新发布审核上架之前，已经更新的用户只能继续用bug版本。<br>4.只能做较大的灰度测试，无法针对功能较小模块甚至代码片段做灰度。</p>
+<p>五、个人总结</p>
+<p>1、 这次的发布我们将引入 Apple 的【灰度发布机制】，减少上线后的项目可能出现的异常而造成的风险。<br>2、 Apple 灰度发布，默认最长时间是7天，每天按照不同的百分比灰度且不可更改时间与百分比。<br>3、 灰度发布可提前向所有用户发布<br>4、 灰度发布时候，遇到问题可暂停灰度，最多暂停30天。<br>5、 Apple 的项目灰度的时候遇到严重问题，无法回滚之前版本。只能先暂停灰度，然后重新上个新版本覆盖原来的版本。<br>6、 Apple 应用默认是连接WiFi的时候，有最新版本会自动更新应用。<strong>Apple 的灰度发布效果只针对【自动下载更新】功能</strong>。未在灰度范围内的用户，还是可以手动的方式搜索到应用，手动更新。</p>
+<hr>
+<p><strong>六、参考相关链接：</strong><br>1.<a href="http://www.jiemian.com/article/1378301.html" target="_blank" rel="noopener">http://www.jiemian.com/article/1378301.html</a><br>2.<a href="http://www.pmcaff.com/article/index/786702749524096?from=label&amp;pmc_param%5Blabel_name%5D=" target="_blank" rel="noopener">http://www.pmcaff.com/article/index/786702749524096?from=label&amp;pmc_param[label_name]=</a></p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/Apple管理/" title="Apple管理">Apple管理</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../26/iOS 获取系统wifi列表/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">iOS 获取系统wifi列表</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../../04/22/iOS 开发去除 CocoaPods 警告(Fix Xcode Warning)/">
+                <span class="nav-default">关闭CocoaPods中的警告</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">iOS 推送原理</h2>
+            <div class="post-meta">
+                <span class="post-time">2017-01-02</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/技术/">技术</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-简介"><span class="toc-text">1.简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地通知"><span class="toc-text">本地通知</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#远程推送"><span class="toc-text">远程推送</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-获得-deviceToken-过程"><span class="toc-text">1.获得 deviceToken 过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-利用deviceToken进行数据传输-推送通知"><span class="toc-text">2.利用deviceToken进行数据传输,推送通知</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-APNS的推送机制"><span class="toc-text">3 APNS的推送机制</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h2><p>iOS中提供了2中推送通知</p>
+<p>1.本地推送通知(Local Notification)<br>2.远程推送通知(Remote Notification)</p>
+<hr>
+<a id="more"></a>
+<h2 id="本地通知"><a href="#本地通知" class="headerlink" title="本地通知"></a>本地通知</h2><blockquote>
+<p>1.不需要服务器支持(无需联网)就能发出的推送通知<br>2.使用场景: 定时类任务(闹钟,简单的游戏等等)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 1.创建一个本地通知</span><br><span class="line"></span><br><span class="line">UILocalNotification *localNote = [[UILocalNotification alloc] init];</span><br><span class="line"></span><br><span class="line">// 1.1.设置通知发出的时间</span><br><span class="line"></span><br><span class="line">localNote.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];</span><br><span class="line"></span><br><span class="line">// 1.2.设置通知内容</span><br><span class="line"></span><br><span class="line">localNote.alertBody = @&quot;这是一个推送这是一个推送&quot;;</span><br><span class="line"></span><br><span class="line">// 1.3.设置锁屏时,字体下方显示的一个文字</span><br><span class="line"></span><br><span class="line">localNote.alertAction = @&quot;吃饭了吗&quot;;</span><br><span class="line"></span><br><span class="line">localNote.hasAction = YES;</span><br><span class="line"></span><br><span class="line">// 1.4.设置启动图片(通过通知打开的)</span><br><span class="line"></span><br><span class="line">localNote.alertLaunchImage = @&quot;../Documents/IMG\_0024.jpg&quot;;</span><br><span class="line"></span><br><span class="line">// 1.5.设置通过到来的声音</span><br><span class="line"></span><br><span class="line">localNote.soundName = UILocalNotificationDefaultSoundName;</span><br><span class="line"></span><br><span class="line">// 1.6.设置应用图标左上角显示的数字</span><br><span class="line"></span><br><span class="line">localNote.applicationIconBadgeNumber = 999;</span><br><span class="line"></span><br><span class="line">// 1.7.设置一些额外的信息</span><br><span class="line"></span><br><span class="line">localNote.userInfo = @&#123;@&quot;qq&quot; : @&quot;704711253&quot;, @&quot;msg&quot; : @&quot;success&quot;&#125;;</span><br><span class="line"></span><br><span class="line">// 2.执行通知</span><br><span class="line"></span><br><span class="line">[[UIApplication sharedApplication] scheduleLocalNotification:localNote];</span><br></pre></td></tr></table></figure>
+<p><img src="/blog/2017/01/02/iOS 推送原理/A497464264BB73B0190672F562010388.gif" alt=""></p>
+<hr>
+<h2 id="远程推送"><a href="#远程推送" class="headerlink" title="远程推送"></a>远程推送</h2><h4 id="1-获得-deviceToken-过程"><a href="#1-获得-deviceToken-过程" class="headerlink" title="1.获得 deviceToken 过程"></a>1.获得 deviceToken 过程</h4><p><strong>Provider</strong> : 程序的后台服务器<br><strong>APNS</strong> <code>(Apple Push Notification Service)</code> : Apple的推送服务器<br><strong>Device</strong>: Apple 设备、iphone、ipad、iTouch。</p>
+<p><img src="/blog/2017/01/02/iOS 推送原理/16AE27339D21F2D136F70F41C0633124.png" alt=""></p>
+<p><img src="/blog/2017/01/02/iOS 推送原理/F516AD9BFB9190FB3ABBF29456D85552.png" alt=""></p>
+<blockquote>
+<p>1、客户端向苹果服务APNS,发送设备的UDID和 Bundle Identifier.<br>2、经苹果服务器加密生成一个deviceToken<br>3、将当前用户的deviceToken(用户标识),发送给自己应用的服务器<br>4、自己的服务器,将得到的deviceToken,进行保存</p>
+</blockquote>
+<h4 id="2-利用deviceToken进行数据传输-推送通知"><a href="#2-利用deviceToken进行数据传输-推送通知" class="headerlink" title="2.利用deviceToken进行数据传输,推送通知"></a>2.利用<code>deviceToken</code>进行数据传输,推送通知</h4><p><img src="/blog/2017/01/02/iOS 推送原理/054F5A66A751EB801AC7B3E832B51E1B.png" alt=""></p>
+<h4 id="3-APNS的推送机制"><a href="#3-APNS的推送机制" class="headerlink" title="3 APNS的推送机制"></a>3 APNS的推送机制</h4><p><img src="/blog/2017/01/02/iOS 推送原理/6FF43142F9B1BC7D574F1BD8D5D2BA1B.png" alt=""></p>
+<p><img src="/blog/2017/01/02/iOS 推送原理/85C827BCE793003C18C90F2AE644527B.jpg" alt=""></p>
+<hr>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/OC、Swift/" title="OC、Swift">OC、Swift</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../MacOS下搭建博客/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">GitHub Pages + Hexo</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../iOS 推送注册流程/">
+                <span class="nav-default">iOS 推送注册流程</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">移动端WebView的调试</h2>
+            <div class="post-meta">
+                <span class="post-time">2017-08-02</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/技术/">技术</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-iOS端WebView的调试"><span class="toc-text">1.iOS端WebView的调试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-具体设置"><span class="toc-text">1.1 具体设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-操作"><span class="toc-text">1.2 操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Android端WebView调试"><span class="toc-text">2.Android端WebView调试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-具体设置"><span class="toc-text">2.1 具体设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-具体操作"><span class="toc-text">2.2 具体操作</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>鉴于目前移动端开发中对H5页面的调试和检查缺乏统一的方法，先针对iOS和Android分别介绍对应的WebView调试方法，供App开发和H5开发人员参考。</p>
+<blockquote>
+<p>Android端调试方法比较复杂，可能需要Android开发人员配合前端一起搭建测试环境，详见文尾链接。</p>
+</blockquote>
+<h1 id="1-iOS端WebView的调试"><a href="#1-iOS端WebView的调试" class="headerlink" title="1.iOS端WebView的调试"></a>1.iOS端WebView的调试</h1><p>iOS端可以使用Mac的Safari进行WebView调试，具体步骤如下：</p>
+<ul>
+<li>手机安装App的<code>开发包</code></li>
+<li>打开手机Safari的<code>Web检查器</code></li>
+<li>连接iPhone和Mac</li>
+<li>打开Mac上Safari的<code>开发</code>菜单</li>
+</ul>
+<a id="more"></a>
+<h2 id="1-1-具体设置"><a href="#1-1-具体设置" class="headerlink" title="1.1 具体设置"></a>1.1 具体设置</h2><ul>
+<li>打开手机Safari的<code>Web检查器</code>：</li>
+</ul>
+<p>打开手机的<code>设置-&gt;Safari-&gt;高级</code>，打开<code>Web检查器</code><br><img src="/blog/2017/08/02/移动端WebView调试方法/CD3978C4602C2A0C05315F433CDCB2E8.png" alt="image.png-203.7kB"></p>
+<ul>
+<li>打开Mac上Safari的<code>开发</code>菜单：</li>
+</ul>
+<p>打开Mac上<code>Safari-&gt;偏好设置-&gt;高级</code>，勾选<code>在菜单栏中显示“开发”菜单</code>。</p>
+<p><img src="/blog/2017/08/02/移动端WebView调试方法/580263E53133CE4746FDA8499E83FC0D.png" alt="image.png-340kB"></p>
+<h2 id="1-2-操作"><a href="#1-2-操作" class="headerlink" title="1.2 操作"></a>1.2 操作</h2><ul>
+<li>将iPhone用数据线连接到Mac</li>
+<li>打开App中的webview加载网页</li>
+<li>在Mac的Safari中点开<code>开发</code>，找到手机的名称，即可看到App中加载的网页，点开即可调试。</li>
+</ul>
+<p><img src="/blog/2017/08/02/移动端WebView调试方法/79BCBA90876E05C0C1273F25DEE3E6A7.png" alt="image.png-179kB"></p>
+<p><img src="/blog/2017/08/02/移动端WebView调试方法/75608DDB829DC319A75EDEB643732046.png" alt="image.png-267.2kB"></p>
+<h1 id="2-Android端WebView调试"><a href="#2-Android端WebView调试" class="headerlink" title="2.Android端WebView调试"></a>2.Android端WebView调试</h1><p>Android端可以使用chrome浏览器进行WebView调试，具体步骤如下：</p>
+<ul>
+<li>手机安装chrome apk</li>
+<li>打开Android手机的<code>开发者模式</code>，启用<code>USB调试</code>功能</li>
+<li>连接手机和电脑</li>
+<li>打开chrome的<code>inspect</code>页面</li>
+</ul>
+<h2 id="2-1-具体设置"><a href="#2-1-具体设置" class="headerlink" title="2.1 具体设置"></a>2.1 具体设置</h2><ul>
+<li>打开Android手机的<code>开发者模式</code>，启用<code>USB调试</code>功能</li>
+</ul>
+<p><img src="/blog/2017/08/02/移动端WebView调试方法/48EA3ECF269EBB932ED45B699CB38964.png" alt="image.png-228.6kB"></p>
+<h2 id="2-2-具体操作"><a href="#2-2-具体操作" class="headerlink" title="2.2 具体操作"></a>2.2 具体操作</h2><ul>
+<li>将手机通过数据线连接到电脑</li>
+<li>在电脑的chrome浏览器地址栏输入<code>chrome://inspect</code>，观察手机打开的页面</li>
+<li>点击<code>inspect</code>按钮即可打开调试网页（如果许久没有弹出调试界面，则需要翻墙）</li>
+</ul>
+<p><img src="/blog/2017/08/02/移动端WebView调试方法/9C754BB727756B0DC8714200C9518F58.png" alt="image.png-157.1kB"><br><img src="/blog/2017/08/02/移动端WebView调试方法/C3CF96600C0F026316B314966F52DEBA.png" alt="image.png-801.5kB"></p>
+<blockquote>
+<p>通过测试发现该方法目前只支持调试chrome和Android自带浏览器</p>
+<p>关于X5内核的调试以及其他Android调试方法见：<a href="https://github.com/jieyou/remote_inspect_web_on_real_device" target="_blank" rel="noopener">各种 真机远程调试 方法 汇总</a></p>
+</blockquote>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/iOS、Android/" title="iOS、Android">iOS、Android</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../NSTimer需要注意的两个小问题/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">NSTimer需要注意的两个小问题</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../../06/13/测试机器列表达到100台上限/">
+                <span class="nav-default">测试机器列表达到100台上限，怎么办操作？</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">测试机器列表达到100台上限，怎么办操作？</h2>
+            <div class="post-meta">
+                <span class="post-time">2017-06-13</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/管理/">管理</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#公司大了，总会遇到资源不足的情况。比如，苹果开发者账号允许添加100台测试机器，随便多加了几台机器就爆满了。测试部又买了新机器，没法添加到列表中，这让人很心急啊！"><span class="toc-text">公司大了，总会遇到资源不足的情况。比如，苹果开发者账号允许添加100台测试机器，随便多加了几台机器就爆满了。测试部又买了新机器，没法添加到列表中，这让人很心急啊！</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h6 id="公司大了，总会遇到资源不足的情况。比如，苹果开发者账号允许添加100台测试机器，随便多加了几台机器就爆满了。测试部又买了新机器，没法添加到列表中，这让人很心急啊！"><a href="#公司大了，总会遇到资源不足的情况。比如，苹果开发者账号允许添加100台测试机器，随便多加了几台机器就爆满了。测试部又买了新机器，没法添加到列表中，这让人很心急啊！" class="headerlink" title="公司大了，总会遇到资源不足的情况。比如，苹果开发者账号允许添加100台测试机器，随便多加了几台机器就爆满了。测试部又买了新机器，没法添加到列表中，这让人很心急啊！"></a>公司大了，总会遇到资源不足的情况。比如，苹果开发者账号允许添加100台测试机器，随便多加了几台机器就爆满了。测试部又买了新机器，没法添加到列表中，这让人很心急啊！</h6><a id="more"></a>
+<p>首先研究一下苹果文档，关于机器名额限制，它是怎么说的：</p>
+<p>Q：How many iOS devices can I register for testing and Ad Hoc distribution?<br>A：You are allowed to register up to 100 iOS devices for testing and Ad Hoc distribution per membership year. Please Note: Although you may remove a device from your account, it will continue to count against your 100 device limit.<br>翻译：<br>Q：我可以添加多少台机器，用于测试和ad-hoc发布？<br>A：每个续约年度，你可以注册最多100台机器。请注意：如果你将一台机器从列表中移除，它仍被计入机器总数。</p>
+<p>Q：How do I reset my list of iOS development devices in Certificates, Identifiers &amp; Profiles?<br>A：At the start of your new membership year, Team Agents or Admins can sign in to the iOS Provisioning Portal to remove listed devices and restore the available device count to 100 devices. Be sure to remove all devices you no longer use for development prior to adding any new devices.<br>翻译：<br>Q：我如何重置机器列表？<br>A：每次续约时，有管理员权限的人可以登录deveoper.apple.com，删除掉一些不需要的机器，这些名额会空闲出来，这样就可以添加新机器。（请注意，一旦你进行机器添加操作，之后再删除的机器就不会空出名额了）</p>
+<p>———————–继续看，实际解决方案：———————–</p>
+<p>如果确实有需要，要在账号续约的一年中，再次重置机器列表，怎么做呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">向苹果客服发送请求</span><br><span class="line">1.找到反馈问题的Program Contact页面，页面位置可能发生变化，目前是 https://developer.apple.com/contact/submit.php</span><br><span class="line">2.登陆Agent账号，也就是创建团队的根账号。</span><br><span class="line">3.填写问题，发送。OK了</span><br></pre></td></tr></table></figure>
+<p><a href="https://developer.apple.com/contact/submit.php" target="_blank" rel="noopener">反馈链接地址</a></p>
+<p>填写问题的地方给大家截个图<br><img src="/blog/2017/06/13/测试机器列表达到100台上限/994EB741BA214A6CCACDCBBAA98118B1.png" alt="这里写图片描述"></p>
+<p>成功发送请求后，苹果会发送确认邮件，之后会有客服单独联系你。</p>
+<p>注意必须用Agent账号，因为我试过用Admin账号发送反馈，客服回复说我没有这个权限，要Agent账号来联系客服。<br><img src="/blog/2017/06/13/测试机器列表达到100台上限/E4398CB9FC202FB9FDBF8A21146F979B.png" alt="这里写图片描述"></p>
+<p>如果客服确认可以处理，就会把账号的机器列表重置为可以删除机器的状态，然后就可以做机器的清理了。</p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/Apple管理/" title="Apple管理">Apple管理</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../../08/02/移动端WebView调试方法/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">移动端WebView的调试</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../12/Apple账号测试机子添加至上限/">
+                <span class="nav-default">Apple账号的添加设备的上限了</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

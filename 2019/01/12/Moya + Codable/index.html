@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">Moya + Codable</h2>
+            <div class="post-meta">
+                <span class="post-time">2019-01-12</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/Swift/">Swift</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Moya-调用"><span class="toc-text">Moya 调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Moya-Codable-原理"><span class="toc-text">Moya + Codable 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Moya-API-模块"><span class="toc-text">Moya API 模块</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>终于有时间把项目中的网络层封装好好理一理了。<br>项目中用一直使用的是 Alamofire 框架，Model 映射是用 Codable框架。<br>在网络层中请求完数据后，将数据传到Model，在model层中做分析、映射。<br>接口比较多的时候，映射的代码就比较冗余。。</p>
+<p>在GitHub上搜了下，有 Moya + Codable 自动解析+映射的方案，感觉挺酷的。</p>
+<a id="more"></a>
+<hr>
+<h2 id="Moya-调用"><a href="#Moya-调用" class="headerlink" title="Moya 调用"></a>Moya 调用</h2><p>Moya一个封装 Alamofire后的网络框架， 我就不多说了，网上的介绍很多。推荐大家看下这篇<a href="https://juejin.im/post/5b02c2a85188256710600f05" target="_blank" rel="noopener">Moya的基本用法</a>。</p>
+<p>Moay 的调用方式： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/// 获取 医生相关服务信息</span><br><span class="line">func requestRelatedServiceInformation() &#123;</span><br><span class="line"></span><br><span class="line">    ApiProvider.request(.Home(.relatedServiceInformation), objectModel: RelatedServiceResultModel.self, success: &#123; (resultModel) in</span><br><span class="line"></span><br><span class="line">        // 成功时候返回 数据模型</span><br><span class="line">        if let model = resultModel.data &#123;</span><br><span class="line">            self.handelDoctorServiceInfoData(model: model)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, errror: &#123; (errorCode, msg) in</span><br><span class="line">        //  返回的 error != 200 ，返回的信息处理</span><br><span class="line">        ProgressDialog.toastInfo(message: msg)</span><br><span class="line"></span><br><span class="line">    &#125;) &#123; (error) in</span><br><span class="line">        //  网络异常的时候处理</span><br><span class="line">        ProgressDialog.toastError(message: kNetWorkErrorTip)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>讲解：<br>【输入】</p>
+<p>1、将TargetType类型，请求信息传入<br>2、将要映射的 Model类型传入</p>
+<p>【输出】</p>
+<p>返回了三种状态<br>1、success：返回 实例化的model<br>2、errror：网络层请求成功但是业务逻辑有误，code !=200（与接口定义成功标识：200 ） ，返回 errorCode与 msg 信息。<br>3、网络层请求不成功抛的异常，比如无网络。。</p>
+<hr>
+<h2 id="Moya-Codable-原理"><a href="#Moya-Codable-原理" class="headerlink" title="Moya + Codable 原理"></a>Moya + Codable 原理</h2><p>Moya + Codable 的方案的思想是 用Swift 泛型的方案。<br>原理是扩展 Response 类，在 Response 中的时候将映射的Model类型传入。<br>将Response 的data 转换成需要映射的Model、再将实例化Model返回出去。。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public extension Response &#123;</span><br><span class="line">    </span><br><span class="line">    // MARK: - 转成对象模型</span><br><span class="line">    func mapObject&lt;T: Codable&gt;(_ type: T.Type, path: String? = nil) throws -&gt; T &#123;</span><br><span class="line">        do &#123;</span><br><span class="line">            return try JSONDecoder().decode(T.self, from: try getJsonData(path))</span><br><span class="line">        &#125; catch &#123;</span><br><span class="line">            throw MoyaError.jsonMapping(self)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">    // MARK: - 获取指定路径数据</span><br><span class="line">    private func getJsonData(_ path: String? = nil) throws -&gt; Data &#123;</span><br><span class="line">        do &#123;            </span><br><span class="line">            var jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject</span><br><span class="line">            if let path = path &#123;</span><br><span class="line">                </span><br><span class="line">                guard let specificObject = jsonObject.value(forKeyPath: path) else &#123;</span><br><span class="line">                    throw MoyaError.jsonMapping(self)</span><br><span class="line">                &#125;</span><br><span class="line">                jsonObject = specificObject as AnyObject</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            return try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)</span><br><span class="line">        &#125; catch &#123;</span><br><span class="line">            throw MoyaError.jsonMapping(self)</span><br><span class="line">          &#125;     </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Moya-API-模块"><a href="#Moya-API-模块" class="headerlink" title="Moya API 模块"></a>Moya API 模块</h2><p>在Moya 中我们知道，定义一个 接口，要在 enum 中添加一条记录。<br>一般项目中接口很多，如果只是在一个 enum 中添加的话，代码就变的很臃肿。<br>在google 大神的帮助下有个同行提供了一个思路，感觉非常棒，参考<a href="https://github.com/YinTokey/Copen" target="_blank" rel="noopener">Moay API 模块化</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">// 分模块写API</span><br><span class="line">enum BaseAPI &#123;</span><br><span class="line">    case Home(HomeAPI)       // 首页模块</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension BaseAPI: TargetType &#123;</span><br><span class="line">    </span><br><span class="line">    var baseURL: URL &#123;</span><br><span class="line">        return URL(string: rootIP)!</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    var path: String &#123;</span><br><span class="line">        switch self &#123;</span><br><span class="line">        case .Home(let home):</span><br><span class="line">            return home.path</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    var method: Moya.Method &#123;</span><br><span class="line">        switch self &#123;</span><br><span class="line">        case .Home(let home):</span><br><span class="line">            return home.method</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    var task: Task &#123;</span><br><span class="line">        switch self &#123;</span><br><span class="line">        case .Home(let home):</span><br><span class="line">            return home.task</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    var headers: [String: String]? &#123;</span><br><span class="line">        return [&quot;user_token&quot;: UserSession.shared.token ?? &quot;&quot;]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var sampleData: Data &#123;</span><br><span class="line">        return &quot;&quot;.data(using: String.Encoding.utf8)!</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在 HomeAPI 类中定义:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">enum ![HomeAPI]($resource/) &#123;</span><br><span class="line">    // 获取未读消息</span><br><span class="line">    case getNotifyUnreadMsgNum</span><br><span class="line">    // 医生相关的消息</span><br><span class="line">    case relatedServiceInformation</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension HomeAPI &#123;</span><br><span class="line"></span><br><span class="line">    var path: String &#123;</span><br><span class="line">        switch self &#123;</span><br><span class="line">        case .getNotifyUnreadMsgNum:</span><br><span class="line">            return &quot;/doctor/getNotifyUnreadMsgNum&quot;</span><br><span class="line">        case .relatedServiceInformation:</span><br><span class="line">            return &quot;/doctor/relatedServiceInformation&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var method: Moya.Method &#123;</span><br><span class="line">        switch self &#123;</span><br><span class="line">        case .getNotifyUnreadMsgNum:</span><br><span class="line">            return .get</span><br><span class="line">        case .relatedServiceInformation:</span><br><span class="line">            return .post</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var task: Task &#123;</span><br><span class="line">        switch self &#123;</span><br><span class="line">        case .getNotifyUnreadMsgNum:</span><br><span class="line">            return .requestPlain</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将不同的功能模块，自定义API类。</p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/Moya/" title="Moya">Moya</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../29/浅谈Watch App/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">浅谈 Watch App</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../02/iPhone 多机型适配/">
+                <span class="nav-default">iPhone 多机型适配与Icon、Launch尺寸介绍</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

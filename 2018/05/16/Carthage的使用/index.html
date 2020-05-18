@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">Carthage和CocoaPods简介</h2>
+            <div class="post-meta">
+                <span class="post-time">2018-05-16</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/iOS/">iOS</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Carthage和CocoaPods简介"><span class="toc-text">1. Carthage和CocoaPods简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Carthage配置"><span class="toc-text">2. Carthage配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-安装"><span class="toc-text">2.1 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-查看和升级"><span class="toc-text">2.2 查看和升级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-卸载"><span class="toc-text">2.3 卸载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Carthage第三方库配置"><span class="toc-text">3. Carthage第三方库配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-创建Cartfile"><span class="toc-text">3.1 创建Cartfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-用Xcode打开-编辑Cartfile"><span class="toc-text">3.2 用Xcode打开/编辑Cartfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-添加依赖库"><span class="toc-text">3.3 添加依赖库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-安装-编译Cartfile中的project"><span class="toc-text">3.4 安装/编译Cartfile中的project</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-附-更新Framework的版本"><span class="toc-text">3.5 (附)更新Framework的版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-引入Carthage依赖库到Xcode"><span class="toc-text">4. 引入Carthage依赖库到Xcode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-引入Carthage依赖库的调试信息到Xcode"><span class="toc-text">5. 引入Carthage依赖库的调试信息到Xcode</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-加快-Carthage-Copy-Framework-的速度"><span class="toc-text">5.1 加快 Carthage Copy Framework 的速度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-引入Carthage依赖库到单元测试或者某个Framework中"><span class="toc-text">6. 引入Carthage依赖库到单元测试或者某个Framework中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-嵌套依赖"><span class="toc-text">7. 嵌套依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-使用submodules做依赖"><span class="toc-text">8. 使用submodules做依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-自动构建依赖库"><span class="toc-text">9. 自动构建依赖库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-让自己的工程支持Carthage"><span class="toc-text">10. 让自己的工程支持Carthage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-分享你的工程的Xcode-schemes"><span class="toc-text">10.1 分享你的工程的Xcode schemes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-解决构建失败"><span class="toc-text">10.2 解决构建失败</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-给稳定的版本打tag"><span class="toc-text">10.3 给稳定的版本打tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-4-将预构建的framework归档到zip文件"><span class="toc-text">10.4 将预构建的framework归档到zip文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-5-构建静态库来加快App的启动"><span class="toc-text">10.5 构建静态库来加快App的启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-6-声明自己的工程支持Carthage"><span class="toc-text">10.6 声明自己的工程支持Carthage</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-应对GitHub限流"><span class="toc-text">11. 应对GitHub限流</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#12-Archieve-打包失败"><span class="toc-text">12. Archieve 打包失败</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-切换xcodebuild的版本"><span class="toc-text">13. 切换xcodebuild的版本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考："><span class="toc-text">参考：</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</li></div>
+        <div class="post-content">
+            <h2 id="1-Carthage和CocoaPods简介"><a href="#1-Carthage和CocoaPods简介" class="headerlink" title="1. Carthage和CocoaPods简介"></a>1. Carthage和CocoaPods简介</h2><p>简单介绍一下Carthage对于CocoaPods的优点：</p>
+<ul>
+<li><p>CocoaPods的缺点：</p>
+<ul>
+<li>每次更新库都需要去请求中心库服务器，获取最新版本信息</li>
+<li>每次clean后的编译都会把所有的库重新编译</li>
+<li>会修改xcode工程配置，使用Workspace</li>
+</ul>
+</li>
+<li><p>Carthage的优点：</p>
+<ul>
+<li>去中心化，不需要去请求中心库服务器，只需要去请求更新具体对应的库信息即可</li>
+<li>clean后，第三方库不会每一次都重新编译</li>
+<li>可以配合CocoaPods使用</li>
+<li>只要工程可以编译成Framework就可以使用Carthage</li>
+<li>不会修改xcode的工程（无干扰）</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p><code>Carthage</code>只支持iOS8+后提供的动态framework</p>
+</blockquote>
+<p>Carthage 和 Swift Package Manager的简单介绍：</p>
+<pre><code>1. `Carthage vs Swift Package Manager`
+2. 
+3. `How about the differences between Carthage and Swift Package Manager?`
+4. 
+5. `The main focus of the Swift Package Manager is to share Swift code in a developer-friendly way. Carthage’s focus is to share dynamic frameworks. Dynamic frameworks are a superset of Swift packages since they may contain Swift code, Objective-C code, non-code assets (e.g. images) or any combinations of the three.`
+6. 
+7. `\&gt; Note: A package is a collection of Swift source files plus a manifest file.`
+8. `The manifest file defines the package’s name and its content.`
+</code></pre><h2 id="2-Carthage配置"><a href="#2-Carthage配置" class="headerlink" title="2. Carthage配置"></a>2. Carthage配置</h2><h3 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h3><p>使用homebrew安装：</p>
+<pre><code>1. `brew install carthage`
+</code></pre><h3 id="2-2-查看和升级"><a href="#2-2-查看和升级" class="headerlink" title="2.2 查看和升级"></a>2.2 查看和升级</h3><pre><code>1. `// 查看：`
+2. `carthage version`
+3. `// 升级：`
+4. `brew upgrade carthage`
+</code></pre><h3 id="2-3-卸载"><a href="#2-3-卸载" class="headerlink" title="2.3 卸载"></a>2.3 卸载</h3><pre><code>1. `sudo brew uninstall carthage`
+</code></pre><h2 id="3-Carthage第三方库配置"><a href="#3-Carthage第三方库配置" class="headerlink" title="3. Carthage第三方库配置"></a>3. Carthage第三方库配置</h2><h3 id="3-1-创建Cartfile"><a href="#3-1-创建Cartfile" class="headerlink" title="3.1 创建Cartfile"></a>3.1 创建<a href="https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile" target="_blank" rel="noopener">Cartfile</a></h3><pre><code>1. `// 1.进入工程目录`
+2. `cd ~/project`
+3. `// 2.创建Cartfile`
+4. `touch Cartfile`
+</code></pre><h3 id="3-2-用Xcode打开-编辑Cartfile"><a href="#3-2-用Xcode打开-编辑Cartfile" class="headerlink" title="3.2 用Xcode打开/编辑Cartfile"></a>3.2 用Xcode打开/编辑Cartfile</h3><pre><code>1. `open -a Xcode Cartfile`
+</code></pre><h3 id="3-3-添加依赖库"><a href="#3-3-添加依赖库" class="headerlink" title="3.3 添加依赖库"></a>3.3 添加依赖库</h3><pre><code>1. `github &quot;Alamofire/Alamofire&quot; == 4.5`
+2. `github &quot;Alamofire/AlamofireImage&quot; ~\&gt; 3.2`
+</code></pre><blockquote>
+<ul>
+<li>Dependency origin: project的位置<br>github：来自Github<br>git: 来自git仓库</li>
+<li>使用 <code>Username/ProjectName</code> 指定一个project</li>
+<li>版本的含义:<br>~>3.0: 表示使用版本3.0以上但是低于4.0的最新版本，如3.5, 3.9。<br>=3.0: 表示大于3.0的版本<br>==3.0: 表示使用3.0版本。<br>=3.0: 表示使用3.0或更高的版本。<br>如果你没有指明版本号，则会自动使用最新的版本。</li>
+<li>指定branch name / tag name / commit name:<br>使用指定的 “branch / tag / commit”<br>(例如：分支”master”、提交”5c8a74a”)</li>
+</ul>
+</blockquote>
+<pre><code>1. `\# 使用最新的版本`
+2. `github &quot;jspahrsummers/xcconfigs&quot;`
+3. 
+4. `// 加载任意git，development分支`
+5. `git &quot;https://enterprise.local/desktop/git-error-translations2.git&quot; &quot;development&quot;`
+6. 
+7. `// 加载本地project，指定branch分支`
+8. `git &quot;file:///directory/to/project&quot; &quot;branch&quot;`
+9. 
+10. `\# A binary only framework`
+11. `binary &quot;https://my.domain.com/release/MyFramework.json&quot; ~\&gt; 2.3`
+</code></pre><h3 id="3-4-安装-编译Cartfile中的project"><a href="#3-4-安装-编译Cartfile中的project" class="headerlink" title="3.4 安装/编译Cartfile中的project"></a>3.4 安装/编译Cartfile中的project</h3><p>carthage clone代码，然后编译成Framework:</p>
+<pre><code>1. `// 不指定platform 会为所有的平台编译（Mac / iOS）`
+2. `// 查看更多关于update命令的选项：`carthage help update``
+3. `carthage update --platform iOS`
+</code></pre><blockquote>
+<p>Cartfile利用xcode-select命令来编译Framework，如果你想用其他版的Xcode进行编译，执行下面这条命令，把xcode-select的路径改为另一版本Xcode就可以。<br><code>sudo xcode-select -s /Applications/Xcode-beta.app/Contents/Developer</code></p>
+</blockquote>
+<p>所有的文件会被编译到当前路径的<code>Carthage</code>文件夹中：</p>
+<pre><code>1. `// 打开文件夹`
+2. `open Carthage`
+</code></pre><p><code>Carthage</code>文件夹中文件说明:</p>
+<p><img src="/blog/2018/05/16/Carthage的使用/82225718C9EBBD59A702BD095ED73BAF.png" alt="carthage-directory-21-430x500.png-100.8kB"></p>
+<ul>
+<li><code>Cartfile.resolved</code>:<br>Cartfile的附属文件，记录当前安装库的版本号；强烈建议将该文件加入到版本控制中，告知其他开发者，当前使用的版本。</li>
+<li><p>Carthage文件夹：（是否加入版本控制，由开发者自己考虑） </p>
+<ul>
+<li><code>Build</code>:<br>包含对应平台编译好的Framework</li>
+<li><code>Checkouts</code>:<br>包含编译Framework所使用的源代码（不要修改这里的代码，<code>carthage update</code> 和 <code>carthage checkout</code>会覆盖这里的代码，清除你的修改）</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-5-附-更新Framework的版本"><a href="#3-5-附-更新Framework的版本" class="headerlink" title="3.5 (附)更新Framework的版本"></a>3.5 (附)更新Framework的版本</h3><ul>
+<li><p>打开Cartfile</p>
+<ol>
+<li><code>open -a Xcode Cartfile</code></li>
+</ol>
+</li>
+<li><p>修改版本</p>
+<ol>
+<li><code>// github &quot;Alamofire/Alamofire&quot; == 4.5</code></li>
+<li><code>github &quot;Alamofire/Alamofire&quot; ~\&gt; 4.5.0</code></li>
+</ol>
+</li>
+<li><p>更新</p>
+<ol>
+<li><code>carthage update --platform iOS</code></li>
+</ol>
+</li>
+<li><p>更新指定库</p>
+<ol>
+<li><code>carthage update SVProgressHUD --platform iOS</code></li>
+</ol>
+</li>
+</ul>
+<h2 id="4-引入Carthage依赖库到Xcode"><a href="#4-引入Carthage依赖库到Xcode" class="headerlink" title="4. 引入Carthage依赖库到Xcode"></a>4. 引入Carthage依赖库到Xcode</h2><ul>
+<li>在<code>Carthage</code>-><code>Build</code>中找到需要添加的Framework</li>
+<li>拖拽对应的Framework到Xcode工程的<code>Linked Frameworks and Libraries</code>中</li>
+</ul>
+<p><img src="/blog/2018/05/16/Carthage的使用/6371EA414192638F5DA9BDC5576D7276.gif" alt="navigation.gif-313.9kB"></p>
+<blockquote>
+<p>也可以直接设置Xcode自动搜索Framework的目录：<br>Target—>Build Setting—>Framework Search Path—>添加路径<code>&quot;$(SRCROOT)/Carthage/Build/iOS&quot;</code></p>
+</blockquote>
+<ul>
+<li>进入工程的 target -> <code>Build Phases</code>，点击“+”，添加“<code>New Run Script Phase</code>”:</li>
+</ul>
+<p><img src="/blog/2018/05/16/Carthage的使用/6648DD792180E9C485B45E7FD80BDE92.png" alt="add\_run\_script-650x405.png-124.9kB"></p>
+<p>添加如下脚本命令：</p>
+<pre><code>1. `/usr/local/bin/carthage copy-frameworks`
+</code></pre><p>添加一下<code>Input Files</code>:</p>
+<pre><code>1. `$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework`
+2. `$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework`
+</code></pre><blockquote>
+<p>该命令的目的：<br>当App提交到App Store时，如果App的Framework包含了iOS模拟器的binary images，会被拒绝<a href="http://www.openradar.me/radar?id=6409498411401216" target="_blank" rel="noopener"> App Store submission bug</a>。所以<code>carthage copy-frameworks</code>命令是为了移除Framework多余的模拟器架构(变通方案)。</p>
+</blockquote>
+<p>至此，基本的Carthage使用已经介绍完成，下面将介绍更多关于Carthage的用法。</p>
+<h2 id="5-引入Carthage依赖库的调试信息到Xcode"><a href="#5-引入Carthage依赖库的调试信息到Xcode" class="headerlink" title="5. 引入Carthage依赖库的调试信息到Xcode"></a>5. 引入Carthage依赖库的调试信息到Xcode</h2><ul>
+<li>在工程的 target -> Build Phases，点击“+”，添加“<code>New Copy Files Phase</code>”;</li>
+<li>点击 <code>Destination</code>下拉菜单，选择 “<code>Products Directory</code>”;</li>
+<li>添加Framework对应的dSYM文件</li>
+</ul>
+<p><img src="/blog/2018/05/16/Carthage的使用/AEBB211B3673D6BAB9820C7AB9366D28.png" alt="WX20180109-192146.png-54.4kB"><br><img src="/blog/2018/05/16/Carthage的使用/FC7C629709089ABE26CBE922FADB74B5.png" alt="WX20180109-191945.png-143.9kB"></p>
+<blockquote>
+<p>加入调试信息到工程中后，Xcode在依赖库中中断时，可以符号化调用堆栈，查看依赖库的调用堆栈。<br>Archive工程时，Xcode也会拷贝这些调试信息到.xcarchive bundle 的 dSYMs 子目录中。</p>
+</blockquote>
+<h3 id="5-1-加快-Carthage-Copy-Framework-的速度"><a href="#5-1-加快-Carthage-Copy-Framework-的速度" class="headerlink" title="5.1 加快 Carthage Copy Framework 的速度"></a>5.1 加快 Carthage Copy Framework 的速度</h3><blockquote>
+<p>出处： <a href="https://imtx.me/archives/2673.html" target="_blank" rel="noopener">https://imtx.me/archives/2673.html</a></p>
+</blockquote>
+<p>在 iOS 项目中，如果你使用 Carthage 来管理第三方库，那么一定知道在编译并运行 App 的时候，会有一个阶段叫：Carthage Copy Frameworks。这个阶段通过跑一个脚本的形式把所有依赖的第三方库都复制到 App 的目录里。</p>
+<p>这个阶段通常会花 1~x 秒不等，这取决于你的 App 依赖的第三方库数量。默认情况下，每次你 Build &amp; Run 的时候，都会进行一次这个操作——尽管你的第三方库没有任何改变。能不能把这个时间给节省一下？当然可以。</p>
+<p>我最早是在一个英文网站上看到这个技巧的，但是我现在找不到原文了。所以我决定写文章记录一下，如果以后开什么新项目，也记得一定要设置这个东西，每次节省 1 秒，N 次就是 N 秒了。</p>
+<p>加速的过程很简单，只需要在原有的 Xcode 的 Carthage Copy Framework 里面，在原本空白的 <code>Output Files</code> 处，加入对应的 <code>$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/XXX.framework</code> 就可以了，一图胜千言：</p>
+<p><img src="/blog/2018/05/16/Carthage的使用/7C29956EF34DD5F8357E8F005294ACCB.png" alt="image.png-60kB"></p>
+<p>加好这个以后，以后只在 Framework 改变的情况下，才会跑一遍 Copy 脚本，不然只会跑一次。日积月累下来，可以节省出很多时间。</p>
+<h2 id="6-引入Carthage依赖库到单元测试或者某个Framework中"><a href="#6-引入Carthage依赖库到单元测试或者某个Framework中" class="headerlink" title="6. 引入Carthage依赖库到单元测试或者某个Framework中"></a>6. 引入Carthage依赖库到单元测试或者某个Framework中</h2><p>单元测试等非应用类的targets在构建设置中没有“Embedded Binaries”/“Linked Frameworks and Libraries”选项，所以需要拖拽Framework到build phases选项中的“Link Binaries With Libraries”:<br><img src="/blog/2018/05/16/Carthage的使用/E8272E289F25CAE3114EF050DD89AA87.png" alt="WX20180109-194300.png-43.2kB"></p>
+<blockquote>
+<p>在很少情况下，可能要拷贝每个依赖到自己的构建项目（比如，在外部 framework 中嵌入依赖，或者确保依赖在 test bundle 中出现）。怎么做呢？在 Build Phases 选项下点击左上角 “＋” 按钮，选择 “New Copy Files Phases”，然后在 Copy Files 选项下的 Destination 选择器中选择 Frameworks，同时添加 framework 的引用。</p>
+</blockquote>
+<h2 id="7-嵌套依赖"><a href="#7-嵌套依赖" class="headerlink" title="7. 嵌套依赖"></a>7. 嵌套依赖</h2><p>依赖库本身还依赖其他的库，需要显式在Cartfile中写出，并且手动拖拽到自己的项目中。</p>
+<h2 id="8-使用submodules做依赖"><a href="#8-使用submodules做依赖" class="headerlink" title="8. 使用submodules做依赖"></a>8. 使用submodules做依赖</h2><p>如果必须要修改<code>Checkouts</code>中的源代码，当运行<code>carthage update</code>命令时，可以添加<code>--use-submodules</code>选项，该命令会使得Carthage把添加的依赖库作为一个子模块（git submodules）。这样就可以在<code>Checkouts</code>中的源代码内部commit，push。</p>
+<p>运行之后，Carthage 会在仓库中写入 .gitmodules 和 .git/config 文件，并自动更新当依赖的版本发生变化的时候。</p>
+<blockquote>
+<p>查看git submodule:</p>
+<ul>
+<li><a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E5%9D%97" target="_blank" rel="noopener">Git 工具 - 子模块</a></li>
+<li><a href="https://segmentfault.com/a/1190000003076028" target="_blank" rel="noopener">使用Git Submodule管理子模块</a></li>
+</ul>
+</blockquote>
+<p>如果自己没有提交自己修改的Framework到工程中，那么其他人拉取工程后需要运行<code>carthage bootstrap</code>，该命令会下载并编译Cartfile.resolved中你指定版本的源代码。不可以使用<code>carthage update</code>，会覆盖成官方版本。</p>
+<h2 id="9-自动构建依赖库"><a href="#9-自动构建依赖库" class="headerlink" title="9. 自动构建依赖库"></a>9. 自动构建依赖库</h2><p>在工程中，如果修改了依赖库中的代码，并且想在编译父工程的时候重新编译依赖库，可以添加Run Script来调用Carthage编译依赖库：</p>
+<pre><code>1. `/usr/local/bin/carthage build --platform &quot;$PLATFORM\_NAME&quot; &quot;$SRCROOT&quot;`
+</code></pre><blockquote>
+<p>因为修改了依赖库的代码，所以需要使用submodules</p>
+</blockquote>
+<h2 id="10-让自己的工程支持Carthage"><a href="#10-让自己的工程支持Carthage" class="headerlink" title="10. 让自己的工程支持Carthage"></a>10. 让自己的工程支持Carthage</h2><p>Carthage只支持dynamic framework，并且没有中心化的package list，不需要像CocoaPods一样给项目添加说明文件。大部分的framework都是自动编译的。</p>
+<h3 id="10-1-分享你的工程的Xcode-schemes"><a href="#10-1-分享你的工程的Xcode-schemes" class="headerlink" title="10.1 分享你的工程的Xcode schemes"></a>10.1 分享你的工程的Xcode schemes</h3><p>Carthage只能构建已经分享Xcode schemes的.xcodeproj工程，通过运行<code>carthage build --no-skip-current</code>来查看你的所有的intended schemes是否构建成功，然后检查Carthage/Build文件夹是否有编译成功的framework。</p>
+<p>如果运行命令时，有一个重要的scheme没有构建，可以打开Xcode确保“<a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/ConfigureBots.html#//apple_ref/doc/uid/TP40013292-CH9-SW3" target="_blank" rel="noopener">scheme is marked as ‘Shared’</a>”，这样Carthage就可以发现它。</p>
+<p><img src="/blog/2018/05/16/Carthage的使用/41E835D255CFDE429A46C57E3650DF7C.png" alt="image.png-138.8kB"></p>
+<h3 id="10-2-解决构建失败"><a href="#10-2-解决构建失败" class="headerlink" title="10.2 解决构建失败"></a>10.2 解决构建失败</h3><p>若运行<code>carthage build --no-skip-current</code>时，构建失败，可以尝试运行以下命令，如果出错，会有更多的信息帮助你解决问题。</p>
+<pre><code>1. `// (WORKSPACE为具体name.xcworkspace)`
+2. `xcodebuild -scheme SCHEME -workspace WORKSPACE build`
+3. `// 或者 `
+4. `// (PROJECT为具体name.xcodeproj)`
+5. `xcodebuild -scheme SCHEME -project PROJECT build`
+</code></pre><p>如果你安装了多个Apple developer tools（比如Xcode beta），可以使用<code>xcode-select</code>选择一个具体的版本供Carthage使用。</p>
+<h3 id="10-3-给稳定的版本打tag"><a href="#10-3-给稳定的版本打tag" class="headerlink" title="10.3 给稳定的版本打tag"></a>10.3 给稳定的版本打tag</h3><p>Carthage是通过搜索发布到仓库的tag来判断framework的哪个版本是可用的，并且最好使用<a href="https://semver.org/" target="_blank" rel="noopener">semantic version</a>来命名，比如tag <code>v1.2</code>，语义版本是<code>1.2.0</code>。</p>
+<p>目前，不支持没有数字版本号的tag，或者任何字符跟在数字版本号后面（比如：<code>1.2-alpha-1</code>），不支持的tag会被忽略。</p>
+<h3 id="10-4-将预构建的framework归档到zip文件"><a href="#10-4-将预构建的framework归档到zip文件" class="headerlink" title="10.4 将预构建的framework归档到zip文件"></a>10.4 将预构建的framework归档到zip文件</h3><p>如果你的工程依附<a href="https://help.github.com/articles/about-releases/" target="_blank" rel="noopener">GitHub Release</a>，Carthage会自动使用预编译的framework，而不是从头开始构建。</p>
+<p>为了给预构建的framework添加指定tag，支持所有平台的库的二进制文件要打包进一个zip文件，并且该zip要附加到已发布版本的tag下。zip文件的命名要包含<code>.framework</code>(例如 <code>ReactiveCocoa.framework.zip</code>)，来告知Carthage这个zip里有二进制文件。</p>
+<p>可以使用<code>carthage archive</code>打包zip包：</p>
+<pre><code>1. `carthage build --no-skip-current`
+2. `carthage archive YourFrameworkName`
+</code></pre><blockquote>
+<p>也可以通过travis-ci自动上传prebuild frameworks：<a href="https://github.com/Carthage/Carthage/blob/master/README.md#use-travis-ci-to-upload-your-tagged-prebuild-frameworks" target="_blank" rel="noopener">Use travis-ci to upload your tagged prebuild frameworks</a></p>
+</blockquote>
+<h3 id="10-5-构建静态库来加快App的启动"><a href="#10-5-构建静态库来加快App的启动" class="headerlink" title="10.5 构建静态库来加快App的启动"></a>10.5 构建静态库来加快App的启动</h3><p>过多的dynamic frameworks会减慢app的启动时间，Carthage可以通过把<code>动态库</code>构建成<code>静态库</code>来优化启动时间。具体方法查看<a href="https://github.com/Carthage/Carthage/blob/master/Documentation/StaticFrameworks.md" target="_blank" rel="noopener">StaticFrameworks doc</a>。</p>
+<p>但是需要注意：</p>
+<ul>
+<li>Swift官方还不支持静态库；</li>
+<li>这是一个还没有加入到Carthage中的高级方法。</li>
+</ul>
+<h3 id="10-6-声明自己的工程支持Carthage"><a href="#10-6-声明自己的工程支持Carthage" class="headerlink" title="10.6 声明自己的工程支持Carthage"></a>10.6 声明自己的工程支持Carthage</h3><p>添加兼容的badge到README文件，在Markdown中插入以下链接：</p>
+<pre><code>1. `[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)`
+</code></pre><h2 id="11-应对GitHub限流"><a href="#11-应对GitHub限流" class="headerlink" title="11. 应对GitHub限流"></a>11. 应对GitHub限流</h2><blockquote>
+<p>根据：<a href="https://github.com/wireapp/wire-ios/issues/1186" target="_blank" rel="noopener">https://github.com/wireapp/wire-ios/issues/1186</a><br>So there are few things going on here:</p>
+<p>You are being rate-limited by GitHub because carthage bootstrap does a lot of requests when setting up the project. To avoid that you need to:<br>Create a “Personal access token” (in <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">https://github.com/settings/tokens</a>)<br>Add environment variable <code>GITHUB_ACCESS_TOKEN</code> with that token (for example like <a href="http://osxdaily.com/2015/07/28/set-enviornment-variables-mac-os-x/" target="_blank" rel="noopener">this</a>). This way all API requests made by Carthage will be authenticated and you will not hit the limits so easily.<br>The newest Carthage slightly changed the behaviour related to precompiled frameworks, so the easiest way would be to downgrade to version 0.23.0</p>
+</blockquote>
+<p>因为Carthage需要对GitHub做大量的数据请求，所以可能会被限制流量，需要自己申请<code>GITHUB_ACCESS_TOKEN</code>，然后创建环境变量:</p>
+<pre><code>1. `export GITHUB\_ACCESS\_TOKEN=&quot;43xxxxxxxxxxxxxxxxxxx3&quot;`
+</code></pre><p>Carthage就可以通过个人的token来访问GitHub，防止被GitHub限制流量。</p>
+<h1 id="12-Archieve-打包失败"><a href="#12-Archieve-打包失败" class="headerlink" title="12. Archieve 打包失败"></a>12. Archieve 打包失败</h1><p>使用Carthage导入调试信息到Xcode时，Xcode的<code>copy Bundle Resources</code>会链接到该文件，导致打包编译失败。</p>
+<p>解决方法：<br>在<code>copy Bundle Resources</code>中移除Carthage的调试文件</p>
+<h1 id="13-切换xcodebuild的版本"><a href="#13-切换xcodebuild的版本" class="headerlink" title="13. 切换xcodebuild的版本"></a>13. 切换xcodebuild的版本</h1><p>当安装2个Xcode时，比如体验Beta版，会导致之前的Framework无法在当前的Xcode中编译（Framework是swift4.1编译，但是当前环境是swift4.2）:</p>
+<p><img src="/blog/2018/05/16/Carthage的使用/6F4B42EAB047A58EFB21704D5015F591.png" alt="image.png-24kB"></p>
+<p>所以需要使用最新版Swift重新编译，但是此时的xcodebuild依然是稳定版本(即Xcode9)，我们需要将他切换到测试版Xcode10，然后重新编译Carthage即可</p>
+<p><img src="/blog/2018/05/16/Carthage的使用/E606F9DD40F6BBACD86EEA086D5FD010.png" alt="image.png-45.2kB"></p>
+<pre><code>1. `// 切换xcodebuild版本`
+2. `sudo xcode-select -switch /Applications/Xcode-beta.app`
+</code></pre><p><img src="/blog/2018/05/16/Carthage的使用/4EB3B4288F14BFCD6AB819C59EB0002F.png" alt="image.png-43.9kB"></p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ol>
+<li><a href="https://github.com/Carthage/Carthage/blob/master/README.md" target="_blank" rel="noopener">Carthage</a></li>
+<li><a href="http://devtian.me/2015/08/11/translate-carthage-readme/" target="_blank" rel="noopener">(译)Carthage 使用说明</a></li>
+<li><a href="https://www.raywenderlich.com/165660/carthage-tutorial-getting-started-2" target="_blank" rel="noopener">Carthage Tutorial: Getting Started</a></li>
+<li><a href="https://www.jianshu.com/p/52dff4cef8a2" target="_blank" rel="noopener">Carthage安装及使用</a></li>
+</ol>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/Carthage/" title="Carthage">Carthage</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../../06/06/EmptyDataSet-Swift - 使用分析/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">EmptyDataSet-Swift - 使用分析</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../02/获取cell或者cell中的控件在屏幕中的位置/">
+                <span class="nav-default">获取cell或者cell中的控件在屏幕中的位置</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

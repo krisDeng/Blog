@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">TestFlight 学习总结</h2>
+            <div class="post-meta">
+                <span class="post-time">2017-04-21</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/管理/">管理</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、是什么TestFlight"><span class="toc-text">1、是什么TestFlight</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、TestFlight-优点"><span class="toc-text">2、TestFlight 优点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、减少对-Apple-企业账号-的依赖。"><span class="toc-text">1、减少对 Apple 企业账号 的依赖。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、减少更换配置文件对项目的影响，保证线上版本的一致性。"><span class="toc-text">2、减少更换配置文件对项目的影响，保证线上版本的一致性。</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#3、TestFlight-缺点"><span class="toc-text">3、TestFlight 缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、链接"><span class="toc-text">4、链接</span></a></li>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h2 id="1、是什么TestFlight"><a href="#1、是什么TestFlight" class="headerlink" title="1、是什么TestFlight"></a>1、是什么TestFlight</h2><hr>
+<p>TestFlight 是苹果公司为帮助用户更容易的邀请其他人员,在你发布产品到App Store之前,让他们能够参与测试你的 iOS, watchOS 和 tvOS 应用。</p>
+<p>TestFlight集成在iTunes Connect中。</p>
+<hr>
+<a id="more"></a>
+<h2 id="2、TestFlight-优点"><a href="#2、TestFlight-优点" class="headerlink" title="2、TestFlight 优点"></a>2、TestFlight 优点</h2><h4 id="1、减少对-Apple-企业账号-的依赖。"><a href="#1、减少对-Apple-企业账号-的依赖。" class="headerlink" title="1、减少对 Apple 企业账号 的依赖。"></a>1、减少对 <em>Apple 企业账号</em> 的依赖。</h4><ul>
+<li>Apple账号只有<strong>100个设备</strong>（UDID）限制</li>
+<li>TestFlight可以通过添加<strong>25个内部测试</strong>人员(Apple ID)</li>
+<li>TestFlight可以添加<strong>2000个外部测试</strong>人员(Apple ID)</li>
+</ul>
+<h4 id="2、减少更换配置文件对项目的影响，保证线上版本的一致性。"><a href="#2、减少更换配置文件对项目的影响，保证线上版本的一致性。" class="headerlink" title="2、减少更换配置文件对项目的影响，保证线上版本的一致性。"></a>2、减少更换配置文件对项目的影响，保证线上版本的一致性。</h4><p>我们平时的提交测试流程是：</p>
+<ul>
+<li>项目更换配置文件：更换到企业账户的 bundle id、profile…编译打包App。</li>
+<li>将App提交测试到fir第三方平台。</li>
+<li>测试通过后将配置文件重新更换回 公司账户的bundle id、profile…重新打包生产App。</li>
+<li>将要发布的 App 提交iTunes Connect，完善信息，提交审核。</li>
+</ul>
+<p>TestFlight 流程：</p>
+<ul>
+<li>打包生产App 提交到iTunes Connect。</li>
+<li>配置TestFlight 信息，发布给测试人员。</li>
+<li>测试人员通过审核后，将iTunes Connect上的安装包提交审核。</li>
+</ul>
+<hr>
+<h2 id="3、TestFlight-缺点"><a href="#3、TestFlight-缺点" class="headerlink" title="3、TestFlight 缺点"></a>3、TestFlight 缺点</h2><p>1、不能自动化打包<br>2、TestFlight 集成在 iTunes Connect 中，操作权限只有管理员才有。<br>3、因为Bundle ID 一样，手机安装测试版本后，会覆盖原来的正式版本App。</p>
+<hr>
+<h2 id="4、链接"><a href="#4、链接" class="headerlink" title="4、链接"></a>4、链接</h2><p> <a href="https://www.jianshu.com/p/94eb388b5a36" target="_blank" rel="noopener">iOS如何使用TestFlight进行App Beta版测试</a><br> <a href="https://www.jianshu.com/p/684e4b56b99a" target="_blank" rel="noopener">iOS使用TestFlight进行内部和外部人员测试</a><br> <a href="https://www.jianshu.com/p/4be185e4069c" target="_blank" rel="noopener">TestFlight用法 包教包会</a></p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/Apple管理/" title="Apple管理">Apple管理</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../22/iOS 开发去除 CocoaPods 警告(Fix Xcode Warning)/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">关闭CocoaPods中的警告</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../iOS如何使用TestFlight进行App Beta版测试/">
+                <span class="nav-default">iOS如何使用TestFlight进行App Beta版测试</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

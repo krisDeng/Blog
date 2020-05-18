@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">浅谈 Watch App</h2>
+            <div class="post-meta">
+                <span class="post-time">2019-01-29</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/WatchOS/">WatchOS</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的介绍"><span class="toc-text">简单的介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WatchOS-的生命周期"><span class="toc-text">WatchOS 的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WKInterfaceController-生命周期"><span class="toc-text">WKInterfaceController 生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apple-Watch-通信与共享数据"><span class="toc-text">Apple Watch 通信与共享数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浅谈"><span class="toc-text">浅谈</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</li></div>
+        <div class="post-content">
+            <p>今天早上公司整栋楼突然停电了，没有电，没有网络。<br>趁着难得的休闲时间，把【从iOS到Apple Watch:用WatchKit创建新型可穿戴应用】给啃完了。</p>
+<p>这本书没有什么可评价，内容讲的很浅，适合完全不知道 Apple Watch 开发的人，让人看后心里突然明白:<br>“哦, Apple Watch 开发就是这样的啊”，就当做一本扩展见识的书。</p>
+<a id="more"></a>
+<hr>
+<h2 id="简单的介绍"><a href="#简单的介绍" class="headerlink" title="简单的介绍"></a>简单的介绍</h2><p>做过iOS开发的小伙伴都知道，<code>MacApp、iOS、WatchOS</code>都是开发用Apple家的<code>Xcode</code>编译器，开发语言:<code>Object-C | Swift</code>语言。</p>
+<p>iPhoneOS的开发环境：Cocoa Touch 包含 <code>Foundation</code> 和 <code>UIKit</code> 框架<br>MacOSX 的开发环境：Cocoa 包含 <code>Foundation</code> 和 <code>AppKit</code> 框架。<br>WacthOS的开发环境：WatchKit框架</p>
+<hr>
+<h2 id="WatchOS-的生命周期"><a href="#WatchOS-的生命周期" class="headerlink" title="WatchOS 的生命周期"></a>WatchOS 的生命周期</h2><blockquote>
+<p> WatchOS的程序入口与类似iOS。</p>
+</blockquote>
+<p><img src="/blog/2019/01/29/浅谈Watch App/50EB84B1203B91BAE54E60F72CBBE182.png" alt=""></p>
+<p><img src="/blog/2019/01/29/浅谈Watch App/BC30389DB98F6B6AA070A03AAFC002BF.png" alt=""></p>
+<h2 id="WKInterfaceController-生命周期"><a href="#WKInterfaceController-生命周期" class="headerlink" title="WKInterfaceController 生命周期"></a>WKInterfaceController 生命周期</h2><p>Apple Watch 开发中有三个继承于NSObject的重要类: <code>WKInterfaceController</code>、<code>WKInterfaceDivice</code>、<code>WKInterfaceObject</code>。<br>其中 <code>WKInterfaceController</code>，类似 iOS 中的 <code>UIViewController</code>类。</p>
+<p><img src="/blog/2019/01/29/浅谈Watch App/6674AB484C81223155D16BFB77E2C10F.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">init</td>
+<td>初始化你的视图控制器</td>
+</tr>
+<tr>
+<td style="text-align:center">awakeWithContext</td>
+<td>这个方法用来准备显示界面。借助它来加载数据，以及更新标签、图像和其他在故事板场景上的界面对象。</td>
+</tr>
+<tr>
+<td style="text-align:center">willActivate</td>
+<td>这个方法可以让您知道该界面是否对用户可视。借助它来更新界面对象，以及完成相应的任务，完成任务只能在界面可视时使用。</td>
+</tr>
+<tr>
+<td style="text-align:center">didDeactivate</td>
+<td>使用 didDeactivate 方法来执行所有的清理任务。例如，使用此方法来废止计时器、停止动画或者停止视频流内容的传输。您不能在这个方法中设置界面控制器对象的值，在本方法被调用之后到 willActivate 方法再次被调用之前，任何更改界面对象的企图都是被忽略的。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Viecontroller之间跳转方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">presentController(withName: “WKInterfaceController”, context: “title”)</td>
+<td>加载单个 WKInterfaceController 容器</td>
+</tr>
+<tr>
+<td style="text-align:left">pushController(withName: “WKInterfaceController”, context: “title”)</td>
+<td>加载单个 WKInterfaceController 容器</td>
+</tr>
+<tr>
+<td style="text-align:left">pushControllerWithNames</td>
+<td>一次性加载多个 WKInterfaceController，类似UITbarBarViewController的效果</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="Apple-Watch-通信与共享数据"><a href="#Apple-Watch-通信与共享数据" class="headerlink" title="Apple Watch 通信与共享数据"></a>Apple Watch 通信与共享数据</h2><p>WatchApp 实际上是由 Watch App和 WatchKit Extension两个 bundle组成的<br>Watch App 负责数据获取与处理,WatchKit Extension 负责展现界面。</p>
+<p>【与 Containing iOS 应用共享数据】</p>
+<p>他们两者之间的数据通过 【App Groups】共享、传递。</p>
+<p>【与 Containing iOS 应用进行通信】</p>
+<p>Watch 使用方法 <code>openParentApplication:reply:</code> 来给 iOS 发送请求并等待回复。<br>WatchKit Extension并不支持后台运行；它只会在用户直接主动触碰它时才会响应。<br>containing iOS 应用在设置上有许多限制，他可以被配置成后台收集 WatchKit Extension的数据的模式。<br>有些事件可能需要额外的时间来完成，例如接收用户定位的数据，这个就需要通过 iOS 来收集数据，然后传输给 Watch。</p>
+<h2 id="浅谈"><a href="#浅谈" class="headerlink" title="浅谈"></a>浅谈</h2><p>整本书啃下来后的感觉就是，之前觉得Watch开发很神秘，看了书后发现 Watch App 开发 与 iOS App开发 的大同小异，有很多共同点。<br>熟悉iOS开发的小伙伴，看到 WatchKit 框架的中提供的<strong>方法</strong>与<strong>控件</strong>的时候肯定很有熟悉感，相信上手比较容易。<br>因为目前还只是在啃书阶段，所以就总结一点看完的感受，以后真正深入WatchOS开发的话，再写篇深入些的文章。</p>
+<hr>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/WatchKitProgrammingGuide/index.html" target="_blank" rel="noopener">WatchOS 官网</a><br><a href="https://www.jianshu.com/p/fcbd72ead61b" target="_blank" rel="noopener">AppleWatch开发入门</a><br><a href="https://www.appcoda.com.tw/apple-watch%E7%AD%86%E8%A8%98-app-group/" target="_blank" rel="noopener">Phone app的資料分享至 Watch App</a><br><a href="https://www.jianshu.com/p/a26fcbb3281a" target="_blank" rel="noopener">Cocoa Touch 框架</a><br><a href="https://www.jianshu.com/p/0f2ab4b09e8b" target="_blank" rel="noopener">iOS系统框架概述</a></p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/WatchOS/" title="WatchOS">WatchOS</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../../03/25/网易IM集成的坑/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">网易IM集成的坑</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../12/Moya + Codable/">
+                <span class="nav-default">Moya + Codable</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

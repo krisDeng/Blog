@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">JS_Bridge介绍</h2>
+            <div class="post-meta">
+                <span class="post-time">2018-01-09</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/JS-Bridge/">JS_Bridge</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-实现原理"><span class="toc-text">1.实现原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-App已使用的Bridge案例"><span class="toc-text">2.App已使用的Bridge案例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Bridge的性能"><span class="toc-text">3.Bridge的性能</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>实现H5和Native的数据交互，比如账户信息的的交互、本地相册的调用。</p>
+<a id="more"></a>
+<h1 id="1-实现原理"><a href="#1-实现原理" class="headerlink" title="1.实现原理"></a>1.实现原理</h1><p>H5通过JS与原生代码交互（JAVA/OC），具体的实现方式与平台有关。</p>
+<p><img src="/blog/2018/01/09/JS_Bridge介绍/72BE20E7FA20816E316063E8A1D76A07.png" alt=""></p>
+<p>由于bridge的实现与平台有关，所以bridge的JS的代码实现需要区分Android和iOS，分别设计两套对应方法的调用接口。</p>
+<p>同时，JS_Bridge向上开放统一的接口供H5调用，在H5层只有一个调用方法，不区分平台（平台的差异化实现被封装在Bridge中）。</p>
+<h1 id="2-App已使用的Bridge案例"><a href="#2-App已使用的Bridge案例" class="headerlink" title="2.App已使用的Bridge案例"></a>2.App已使用的Bridge案例</h1><p>在gitlab仓库中，已经实现了一套可以使用的Bridge代码，同时提供了Android和iOS对应的实现方式Demo(包括了测试的HTML文件)。具体实现细节在<code>readme</code>文件中都有详细的描述。</p>
+<p>本Bridge因为只涉及到简单的token数据交互，所以初期设计时，iOS和Android都采用了<code>URL拦截</code>的hybrid编程方式，做的非常轻量级。</p>
+<p>H5通过Bridge接口获取App中的登录信息（token），实现H5自身的登录功能（无需在网页端再登录一次）。</p>
+<p>实现细节的简单介绍（详见readme）：</p>
+<ul>
+<li>当H5加载完成时（document.ready）/ 点击登录时，会调用Bridge接口获取App的token信息</li>
+<li>App的webview通过URL拦截，获取到该请求，然后解析URL中携带的<code>请求方法</code>和<code>请求参数</code></li>
+<li>通过对比URL中的<code>请求方法</code>来调用Native中对应方法的代码逻辑，Native处理完之后，回调JS方法，将处理结果（token）传递给JS。</li>
+</ul>
+<h1 id="3-Bridge的性能"><a href="#3-Bridge的性能" class="headerlink" title="3.Bridge的性能"></a>3.Bridge的性能</h1><p><code>URL</code>拦截的方式已经基本可以解决所有的hybrid编程问题，但是<code>URL</code>拦截的方式时延较高，当传递参数较多时解析也不方便。</p>
+<p>所以，当JS_Bridge实现的接口非常多时，让底层的Bridge代码与平台耦合，各平台实现最优化的Hybrid的编程方式（比如iOS中WKWebview的MessageHandler方法）。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://krisdeng.github.io/blog/2018/02/02/Hybrid%20App%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D/">Hybrid App简要介绍</a><br><a href="https://mp.weixin.qq.com/s/rNGD6SotKoO8frmxIU8-xw" target="_blank" rel="noopener">美团大众点评 Hybrid 化建设</a></p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/物联网/" title="物联网">物联网</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../../02/02/Hybrid App简要介绍/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">Hybrid App简要介绍</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../06/App之间相互拉起交互数据/">
+                <span class="nav-default">App之间相互拉起交互数据</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

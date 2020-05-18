@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">App之间相互拉起交互数据</h2>
+            <div class="post-meta">
+                <span class="post-time">2018-01-06</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/iOS/">iOS</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-授权登录流程简述"><span class="toc-text">1. 授权登录流程简述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-授权登录安全性说明"><span class="toc-text">2. 授权登录安全性说明</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <hr>
+<p><img src="/blog/2018/01/06/App之间相互拉起交互数据/1CEA4F5F30274B4692D966BD442EC598.png" alt="App相互拉起交互"></p>
+<a id="more"></a>
+<h1 id="1-授权登录流程简述"><a href="#1-授权登录流程简述" class="headerlink" title="1. 授权登录流程简述"></a>1. 授权登录流程简述</h1><p>目前主流App为了节约用户注册的繁琐步骤，多采用主流账户体系（如微信、微博等）的授权登录方式让用户登录自己的App，简化流程、方便快捷。</p>
+<p>授权的基本流程如下：（模拟场景[应用A请求应用B授权登录]）</p>
+<ul>
+<li>（1）应用A首先在应用B的<code>开发平台</code>注册自己的应用，获取<code>开发平台</code>授予的AppID和App Secret</li>
+<li>（2）用户手机打开应用A，点击“应用B授权登录”，此事从应用A跳转到应用B的授权页面（并携带参数应用的<code>AppID</code>和 请求授权的访问域<code>scope</code>）</li>
+<li>（3）应用B首先判断应用A的AppID是否合法，不合法则授权结束</li>
+<li>（4）用户此时在应用B选择是否同意授权（不同意、取消页面、或超时 被认为授权失败）</li>
+<li>（5）用户同意之后，跳转回应用A（携带参数<code>授权是否成功ErrCode</code>、<code>授权码code</code>）</li>
+<li>（6）如果授权成功（<code>ErrCode=0</code>），此时应用A获得应用B的授权码<code>code</code></li>
+<li>（7）应用A使用 <code>AppID</code> <code>App Secret</code> <code>code</code>参数向应用B的<code>开发平台（后台）</code>请求授权令牌token（access_token, refresh_token）</li>
+</ul>
+<p>基本时序图如下所示：</p>
+<p>应用A应用A应用B应用B云端云端检测是否安装应用B拉起应用B请求应用B授权登录（AppID &amp; Scope）校验应用A的AppID是否合法用户选择是否同意授权应用B返回授权结果（Code）使用(AppID &amp; Secret &amp; Code)请求token返回token</p>
+<h1 id="2-授权登录安全性说明"><a href="#2-授权登录安全性说明" class="headerlink" title="2. 授权登录安全性说明"></a>2. 授权登录安全性说明</h1><p>App之间的授权登录流程，遵循Auth2.0协议。</p>
+<ul>
+<li>应用B通过<code>AppID</code>来判断应用A是否可以被授权</li>
+<li>应用B的 授权后台 通过<code>AppID</code> <code>App Secret</code> <code>code</code>来判断应用A是否可以获取token</li>
+</ul>
+<blockquote>
+<p>关于授权访问域<code>scope</code>：<br>授权访问域主要用来界定应用授权之后，可以获取到的账户信息的范围（如用户个人信息，用户头像），访问域中<code>可选</code>的范围会交由用户判断选择。</p>
+</blockquote>
+<p><img src="/blog/2018/01/06/App之间相互拉起交互数据/688830C9AFC0BFC36C81A83D7F618BE2.png" alt="" title="点击查看大图"></p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/iOS/" title="iOS">iOS</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../09/JS_Bridge介绍/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">JS_Bridge介绍</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../../../2017/12/04/WKWebView 的缓存策略/">
+                <span class="nav-default">WKWebView 的缓存策略</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

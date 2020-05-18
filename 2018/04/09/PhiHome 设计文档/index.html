@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">PhiHome 设计文档</h2>
+            <div class="post-meta">
+                <span class="post-time">2018-04-09</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/物联网/">物联网</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景介绍"><span class="toc-text">背景介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#术语"><span class="toc-text">术语</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#总体设计"><span class="toc-text">总体设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#App控制与交互"><span class="toc-text">App控制与交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设备"><span class="toc-text">设备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设备入网-WiFi"><span class="toc-text">设备入网(WiFi)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SoftAP配网"><span class="toc-text">SoftAP配网</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#局域网发现"><span class="toc-text">局域网发现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#设备认证方式"><span class="toc-text">设备认证方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DeviceID生成算法"><span class="toc-text">DeviceID生成算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#App模块设计"><span class="toc-text">App模块设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JSBridge"><span class="toc-text">JSBridge</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加设备"><span class="toc-text">添加设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#二维码映射机制从服务器获取"><span class="toc-text">二维码映射机制从服务器获取</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#家庭与房间"><span class="toc-text">家庭与房间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后台与服务器"><span class="toc-text">后台与服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#App-设备与后台交互流程"><span class="toc-text">App/设备与后台交互流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#离线不可控项目的交互流程"><span class="toc-text">离线不可控项目的交互流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MQTT服务质量"><span class="toc-text">MQTT服务质量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设备Shadow"><span class="toc-text">设备Shadow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shadow文档格式"><span class="toc-text">Shadow文档格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MQTT-Topic"><span class="toc-text">MQTT Topic</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RESTful-API"><span class="toc-text">RESTful API</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Passthrough机制"><span class="toc-text">Passthrough机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插件机制-lt-待完善"><span class="toc-text">插件机制\&lt;待完善&gt;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后台HTTP接口"><span class="toc-text">后台HTTP接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间同步机制"><span class="toc-text">时间同步机制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#消息推送"><span class="toc-text">消息推送</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#推送机制"><span class="toc-text">推送机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后台管理系统"><span class="toc-text">后台管理系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</li></div>
+        <div class="post-content">
+            <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>===========================================================================================================================</p>
+<p>PhiHome项目是公司智慧家庭战略中控制所有智能家居设备的中枢，致力于将其打造成一个类似米家、京东微联的App。初期它接入的是公司自己的智能插排、全屋路由、智能音箱等产品，后续有可能开放给第三方厂商。</p>
+<a id="more"></a>
+<h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">术语</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">公司云</td>
+<td style="text-align:center">特指上海公司帐号系统</td>
+</tr>
+<tr>
+<td style="text-align:center">帐户</td>
+<td style="text-align:center">公司云帐户</td>
+</tr>
+<tr>
+<td style="text-align:center">后台</td>
+<td style="text-align:center">PhiHome Demo的后台</td>
+</tr>
+<tr>
+<td style="text-align:center">设备</td>
+<td style="text-align:center">插排、智能音箱等IoT设备</td>
+</tr>
+<tr>
+<td style="text-align:center">设备ID</td>
+<td style="text-align:center">标志设备的唯一编号，暂时用设备MAC地址表示</td>
+</tr>
+<tr>
+<td style="text-align:center">SoftAP</td>
+<td style="text-align:center">设备虚拟出来的无线AP</td>
+</tr>
+<tr>
+<td style="text-align:center">MQTT</td>
+<td style="text-align:center">设备与后台通信的协议</td>
+</tr>
+<tr>
+<td style="text-align:center">SSID</td>
+<td style="text-align:center">WiFi的名称</td>
+</tr>
+<tr>
+<td style="text-align:center">JSBridge</td>
+<td style="text-align:center">连接HTML5和App的中间层，使它们可以相互调用函数</td>
+</tr>
+<tr>
+<td style="text-align:center">配网/OnBoarding</td>
+<td style="text-align:center">是指设备连接上互联网的过程</td>
+</tr>
+<tr>
+<td style="text-align:center">设备发现</td>
+<td style="text-align:center">是指在局域网中，App自动发现周边设备的过程</td>
+</tr>
+</tbody>
+</table>
+<h1 id="总体设计"><a href="#总体设计" class="headerlink" title="总体设计"></a>总体设计</h1><h2 id="App控制与交互"><a href="#App控制与交互" class="headerlink" title="App控制与交互"></a>App控制与交互</h2><p><img src="/blog/2018/04/09/PhiHome 设计文档/E07152FA95AF248D6CC21881843F32A9.png" alt="arch"></p>
+<p>配网之后，IoT设备通过MQTT长连接与后台建立长连接，设备会每隔一定时间(设若5秒)定时上报自己的状态，同时设备会接受后台下发的指令并作出响应。</p>
+<h2 id="设备"><a href="#设备" class="headerlink" title="设备"></a>设备</h2><p>=====================================================================================================</p>
+<h2 id="设备入网-WiFi"><a href="#设备入网-WiFi" class="headerlink" title="设备入网(WiFi)"></a>设备入网(WiFi)</h2><p>设备入网的本质是通过某一种方式，告知设备当前已经联网的家用路由器的SSID和密码，目前设备入网有多种方式，每一种方式的优劣不一样。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">入网方式</th>
+<th style="text-align:center">实理原理</th>
+<th style="text-align:center">优点</th>
+<th style="text-align:center">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SoftAP</td>
+<td style="text-align:center">设备虚拟出一个AP，App连上AP告知设备SSID和密码</td>
+<td style="text-align:center">通用性强，成功率高，竞品多使用此方式</td>
+<td style="text-align:center">需要用户在不同WiFi之间来回切换(iOS)，需要用户手动输入密码,不够友好</td>
+</tr>
+<tr>
+<td style="text-align:center">EasyLink/SmartLink之类</td>
+<td style="text-align:center">App发送长短不一的包，一同长度代表不同字符，设备监听并解析出SSID和密码</td>
+<td style="text-align:center">不需要用户切换WiFi</td>
+<td style="text-align:center">比较trick，连接成功率可能偏低（某些厂商声称成功率可达98%）</td>
+</tr>
+<tr>
+<td style="text-align:center">公司定制版快连</td>
+<td style="text-align:center">IoT设备发射特定Beacon包，路由器截获后通知App,App授权后路由器将用户名密码广播出来 ，设备使用它联网</td>
+<td style="text-align:center">方便快捷</td>
+<td style="text-align:center">需要路由器支持，通用性不强，安全性需要多考虑</td>
+</tr>
+</tbody>
+</table>
+<p>PhiHome1.0中，仅考虑通过SoftAP配网，后续会推出公司定制版快连。</p>
+<h3 id="SoftAP配网"><a href="#SoftAP配网" class="headerlink" title="SoftAP配网"></a>SoftAP配网</h3><p><img src="/blog/2018/04/09/PhiHome 设计文档/CFE28AAF2868A3980706B9EFF8C1C41D.png" alt="SoftAP OnBoarding"></p>
+<p>长按设备5秒后，设备进入配网模式，它自身虚拟出一个AP出来，App连接这个AP，将路由器的SSID和密码(由用户提供)传给设备，设备使用该SSID和密码连网成功后，关闭自身的SoftAP,整个配网过程完成。</p>
+<p>由于Android和iOS的系统限制，为了使整个过程的用户体验更加友好，需要注意以下几点：</p>
+<ul>
+<li>用户在App中点击即可跳转到WiFi选择界面</li>
+<li>用户选择完连接设备虚拟出的AP成功后，屏幕顶部弹出Notification，提示”点击返回PhiHome App”,并且实现该功能</li>
+<li>由设备提供给App它扫到的WiFi列表，不由用户手动输入</li>
+</ul>
+<p>设备对App应该提供的接口：</p>
+<ul>
+<li>扫描周围WiFi列表并返回</li>
+<li>当前连接的状态(连接路由器和服务器的状态)</li>
+<li>设备的ID</li>
+<li>关闭SoftAP功能</li>
+</ul>
+<h2 id="局域网发现"><a href="#局域网发现" class="headerlink" title="局域网发现"></a>局域网发现</h2><p>局域网发现是指在同一个局域网中，通过广播或组播，发送发现命令，支持局域网发现协议的设备收到后即返回自己的设备IP、类型等等信息。</p>
+<p>PhiHome 1.0暂时不做支持，但后续需要集成进来，初步选定AllJoyn协议，使用其中的发现机制。(智能插排T1中暂时用的是庆科内置的SDK，基于mDNS)</p>
+<h1 id="设备认证方式"><a href="#设备认证方式" class="headerlink" title="设备认证方式"></a>设备认证方式</h1><p>MQTT本身支持用户名密码验证，设备通过MQTT客户端连接时可以通过用户名密码判断客户的合法性。</p>
+<p>设备的认证方式可以采用所有设备用相同的用户名和密码，也可以一个设备用唯一的用户名和密码。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">认证方式</th>
+<th style="text-align:center">实理原理</th>
+<th style="text-align:center">优点</th>
+<th style="text-align:center">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">所有设备同一个用户名密码</td>
+<td style="text-align:center">烧录同一用户名密码</td>
+<td style="text-align:center">简单，产测简单</td>
+<td style="text-align:center">需同一用户名密码容易泄露</td>
+</tr>
+<tr>
+<td style="text-align:center">每个设备唯一用户名密码</td>
+<td style="text-align:center">每个设备烧录时从服务器读取一个用户名和密码</td>
+<td style="text-align:center">不安全性高，泄露了也不存在系统性风险</td>
+<td style="text-align:center">产测时需要连接服务器，对工厂产测条件有要求</td>
+</tr>
+<tr>
+<td style="text-align:center">加密的DeviceID</td>
+<td style="text-align:center">通过生成算法从MAC生成DeviceID,服务器校验DeviceID的合法性来判断设备的合法性</td>
+<td style="text-align:center">简单，较安全</td>
+<td style="text-align:center">算法一旦泄露或被反编译，即存在系统性风险，用户可以伪造非法DeviceID连接服务器,甚至控制合法用户的设备</td>
+</tr>
+</tbody>
+</table>
+<p>综合成本和时间考虑，先采用加密的DeviceID方案，后续有问题再引入第二种方案。</p>
+<h2 id="DeviceID生成算法"><a href="#DeviceID生成算法" class="headerlink" title="DeviceID生成算法"></a>DeviceID生成算法</h2><p>DeviceID唯一标志一个公司智能设备，为了对设备身份合法性进行验证，防止非法设备连接公司云，需要对设备ID进行校验</p>
+<h1 id="App模块设计"><a href="#App模块设计" class="headerlink" title="App模块设计"></a>App模块设计</h1><p>App打算采用Native+HTML5的方式，设备的具体控制显示页采用HTML5,其余采用Native的方式，中间通信JSBridge通信，这种方式的好处在于一套本地代码可以试用多种智能硬件设备。</p>
+<h1 id="JSBridge"><a href="#JSBridge" class="headerlink" title="JSBridge"></a>JSBridge</h1><p>JSBridge是为了架起Web和Native之间的桥梁，方便Web中的JS调用Native中的(OC/Swift或Java代码)，反之亦然。<br>现在市场有成熟的方案可以供应用，同时，我们需要在JSBridge上封装一层统一接口，提供诸如弹出Toast、弹出确认框、弹出选择等API，供两端调用，实现UI风格统一。</p>
+<p>详细设计文档参考<a href="https://krisdeng.github.io/blog/2018/01/09/JS_Bridge%E4%BB%8B%E7%BB%8D">JSBridge</a></p>
+<h2 id="添加设备"><a href="#添加设备" class="headerlink" title="添加设备"></a>添加设备</h2><p>可以通过三种方式添加设备：</p>
+<ol>
+<li>用户选定设备类别后进入配网步骤</li>
+<li>用户扫描二维码后进入配网步骤</li>
+<li>App检测到自家设备的Beacon包，在App显示，用户点击后进入配网步骤</li>
+</ol>
+<p>PhiHome 1.0只实现方法一。</p>
+<p>添加设备–>选择设备类别–>输入SSID和设备–>配网</p>
+<p>因此二维码需要包含厂商、设备种类等信息。对于同一种类的设备，二维码是一样的。<br>设计成URL形式，多余信息以参数形式提供：</p>
+<p><code>https://phihome.phicomm.com/qr?m=phicomm&amp;c=outlet&amp;p=t1&amp;s=&lt;渠道名&gt;</code></p>
+<p>PhiHome扫描二维码获得里面的参数，根据参数来添加设备。</p>
+<h3 id="二维码映射机制从服务器获取"><a href="#二维码映射机制从服务器获取" class="headerlink" title="二维码映射机制从服务器获取"></a>二维码映射机制从服务器获取</h3><p>点击添加设备后，App从服务器拉取从<code>m</code>,<code>c</code>,<code>p</code>值到处理添加设备类的映射关系。</p>
+<h1 id="家庭与房间"><a href="#家庭与房间" class="headerlink" title="家庭与房间"></a>家庭与房间</h1><p>一个用户可以有多个家庭/住所(至少有一个)，一个住所可以有多个房子，一个设备可以放到房子里，也可以不放入房子里。</p>
+<h1 id="后台与服务器"><a href="#后台与服务器" class="headerlink" title="后台与服务器"></a>后台与服务器</h1><p>PhiHome后台接口设计为通用型的，即不与单独某一种类的设备相关，它不管接入的是插座、音箱、或是体脂称，都应有通用处理能力。</p>
+<h2 id="App-设备与后台交互流程"><a href="#App-设备与后台交互流程" class="headerlink" title="App/设备与后台交互流程"></a>App/设备与后台交互流程</h2><h3 id="离线不可控项目的交互流程"><a href="#离线不可控项目的交互流程" class="headerlink" title="离线不可控项目的交互流程"></a>离线不可控项目的交互流程</h3><p>简单图示如下：</p>
+<p><img src="/blog/2018/04/09/PhiHome 设计文档/B15159566632EFC555E1F7E18FC7F763.png" alt="DirectControl"></p>
+<p>注：loading条设一个定时器，如果一定时间后还没有被App关闭，说明网络异常，App没接收到数据<br>提醒用户设备异常。</p>
+<p>注2：用户将<code>/update/accepted</code>接收到的内容与之前的对比，如果一致，表示没有设置成功，同样提醒用户。</p>
+<h3 id="MQTT服务质量"><a href="#MQTT服务质量" class="headerlink" title="MQTT服务质量"></a>MQTT服务质量</h3><p>MQTT提供了三种服务质量：“至多一次”、“至少一次”以及“刚好一次”。</p>
+<p>QoS=0：至多传递一次消息，或者根本就不传递消息。不会确认通过网络来传递此消息。<br>不存储此消息。如果客户机断开连接或者服务器失败，那么消息可能会丢失。QoS=0 是最快传递方式。</p>
+<p>QoS=1： 是缺省传递方式。<br>始终会至少传递一次消息。如果发送方未接收到确认信息，那么会在设置了 DUP 标志的情况下再次发送此消息，直到接收到确认信息为止。因此，接收方可以多次发送同一消息，并且可以多次处理此消息。</p>
+<p>QoS=2：始终刚好传递一次消息。<br>必须将消息存储在发送方和接收方本地，直到已处理此消息为止。QoS=2 是最安全、但是最慢的传递方式</p>
+<p>PhiHome缺省采用QoS=1的服务质量</p>
+<h2 id="设备Shadow"><a href="#设备Shadow" class="headerlink" title="设备Shadow"></a>设备Shadow</h2><p>为了实现通用的目标，服务器不能提供跟具体业务相关的接口，并引入一个所谓的Shadow，它是一个合法的JSON对象，存储当前设备的所有最新状态，Shadow并不关心具体的业务所用的字段。</p>
+<p>HTTP客户端和MQTT客户端都可以更新此Shadow。一旦Shadow更新成功(或失败)，它发往topic <code>/update/accepted</code>发送一个包含所有尝试更新的属性。(或如果失败会往<code>/update/rejected</code>发布消息)</p>
+<h3 id="Shadow文档格式"><a href="#Shadow文档格式" class="headerlink" title="Shadow文档格式"></a><a href="http://appdesign.doc.szrd.phiwifi.com/phihome/phihome_architecture.html#Shadow%E6%96%87%E6%A1%A3%E6%A0%BC%E5%BC%8F" title="Shadow文档格式" target="_blank" rel="noopener"></a>Shadow文档格式</h3><pre><code>1. `{`
+2. ` &quot;state&quot;: {`
+3. ` &quot;desired&quot;: {`
+4. 
+5. ` }，`
+6. ` &quot;reported&quot;: {`
+7. 
+8. ` }`
+9. ` },`
+10. ` &quot;version&quot;: \&lt;VER\&gt;,`
+11. ` &quot;timestamp&quot;: \&lt;EPOTIME\&gt;`
+12. `}`
+</code></pre><p>其中外层<code>version</code>字段每次更新Shadow时会自动加1，<code>timestamp</code>是最后更新的时间戳， <code>state</code>和<code>desired</code>，<code>reported</code>是固定格式，<code>desired</code>,<code>reported</code>里面可以是任意格式JSON文件。每次更新Shadow,<code>version</code>都会自动加1，如果上传上了version字段比当前的小，会发布<code>update/rejected</code>消息。</p>
+<p><code>desired</code>表示App更新的的shadow内容，<code>reported</code>表示设备上报的内容，在不允许离线控制设备的项目，<code>desired</code>永远为null。设备上报内容给<code>reported</code>里，App永远反映<code>reported</code>里的内容。</p>
+<blockquote>
+<p>注：引入版本号会增加系统的复杂度，如果不使用版本号，所有设备都同步使用服务器配置，暂时无法确定无版本号是否满足需求。</p>
+</blockquote>
+<h3 id="MQTT-Topic"><a href="#MQTT-Topic" class="headerlink" title="MQTT Topic"></a>MQTT Topic</h3><p>MQTT预定义了若干Topic，以反映Shadow的事件（更新、获取、删除）：</p>
+<pre><code>1. `$phihome/shadow/\&lt;ProjectName\&gt;/\&lt;DeviceID\&gt;/\&lt;ShadowName\&gt;/update: 发布消息到这个Topic以更新Shadow`
+2. `$phihome/shadow/\&lt;ProjectName\&gt;/\&lt;DeviceID\&gt;/\&lt;ShadowName\&gt;/update/accepted: Shadow成功更新后会发布消息到这个主题，内容是更新的部分`
+3. `$phihome/shadow/\&lt;ProjectName\&gt;/\&lt;DeviceID\&gt;/\&lt;ShadowName\&gt;/update/rejected: Shadow更新失败后会发布消息到这个主题，内容是被拒绝更新的部分`
+4. `$phihome/shadow/\&lt;ProjectName\&gt;/\&lt;DeviceID\&gt;/\&lt;ShadowName\&gt;/get: 发布消息到这个Topic以获得Shadow里的所有内容`
+5. `$phihome/shadow/\&lt;ProjectName\&gt;/\&lt;DeviceID\&gt;/\&lt;ShadowName\&gt;/get/accepted: Shadow成功被获得后会发布消息到这个主题，内容是Shadow所有内容`
+6. `$phihome/shadow/\&lt;ProjectName\&gt;/\&lt;DeviceID\&gt;/\&lt;ShadowName\&gt;/get/rejected: Shadow未被成功获得后会发布消息到这个主题，内容是Shadow所有内容`
+7. 
+8. 
+</code></pre><p>get的body可以带参数，参数内容指定要获得的Shadow的特定内容。如/get参数为(省略了引号):</p>
+<pre><code>1. `{`
+2. ` state: {`
+3. ` desired: {`
+4. ` s1: \&lt;WHATEVER\_VALUE\_IS\&gt;,`
+5. ` be: {`
+6. ` with: {`
+7. ` me: \&lt;WHATEVER\_VALUE\_IS\&gt;`
+8. ` }`
+9. ` }`
+10. ` }`
+11. ` }`
+12. `}`
+</code></pre><p>/get/accepted 返回</p>
+<pre><code>1. `{`
+2. ` state: {`
+3. ` desired: {`
+4. ` s1: 1,`
+5. ` be: {`
+6. ` with: {`
+7. ` me: &quot;hehe&quot;`
+8. ` }`
+9. ` }`
+10. ` }`
+11. ` },`
+12. ` version:xx, timestamp:xx`
+13. `}`
+</code></pre><p>/get参数可以</p>
+<pre><code>1. `{`
+2. ` state: {`
+3. ` desired: {`
+4. ` s1: \&lt;WHATEVER\_VALUE\_IS\&gt;,`
+5. ` be: {`
+6. ` with: {`
+7. ` me: \&lt;WHATEVER\_VALUE\_IS\&gt;`
+8. ` }`
+9. ` }`
+10. ` }`
+11. ` }`
+12. `}`
+</code></pre><p>/get/accepted 返回</p>
+<pre><code>1. `{`
+2. ` state: {`
+3. ` desired: {`
+4. ` s1: 1,`
+5. ` be: {`
+6. ` with: {`
+7. ` me: &quot;hehe&quot;`
+8. ` }`
+9. ` }`
+10. ` }`
+11. ` },`
+12. ` version:xx, timestamp:xx`
+13. `}`
+</code></pre><h3 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API"></a>RESTful API</h3><p>RESTful API可以供更新Shadow, 但是App亦采用MQTT去更新Shadow，因此RESTful API目前仅作为测试用途，可以先不实现。</p>
+<ul>
+<li><p>GetShadow: 获得Shadow所有属性</p>
+<pre><code>1. `HTTP GET https://endpoint/things/phihome/shadow`
+</code></pre></li>
+<li><p>UpdateShadow: 更新Shadow特定的属性</p>
+<pre><code>1. `HTTP POST https://endpoint/things/phihome/shadow`
+2. `BODY: request state document`
+</code></pre></li>
+<li><p>DeleteShadow: 删除Shadow所有属性\&lt;服务器有禁止策略></p>
+<pre><code>1. `HTTP DELETE https://endpoint/things/phihome/shadow`
+</code></pre></li>
+</ul>
+<h1 id="Passthrough机制"><a href="#Passthrough机制" class="headerlink" title="Passthrough机制"></a>Passthrough机制</h1><p>Shadow本质是基于publish/subscribe机制，截取publish的数据存放在服务器中，PhiHome也支持跳过Shadow，通过Passthrough机制支持App和设备间的通信，MQTT服务器仅相当于一个中转服务器，不留存任何信息。</p>
+<p>Passthrough适合显示不需要服务器存储、以后也不需要用到的临时信息。否则则应该使用Shadow.</p>
+<h2 id="插件机制-lt-待完善"><a href="#插件机制-lt-待完善" class="headerlink" title="插件机制\&lt;待完善>"></a>插件机制\&lt;待完善></h2><p>Shadow只记录设备的当前状态，如果需要查询历史状态，如历史耗电量、上下线记录，则服务器需要提供一种插件机制，持久化到数据库。</p>
+<h2 id="后台HTTP接口"><a href="#后台HTTP接口" class="headerlink" title="后台HTTP接口"></a>后台HTTP接口</h2><p>后台提供跟Shadow更新无关的HTTP接口：主要有家庭管理、房间管理、场景管理</p>
+<p>后台提供HTTP接口：</p>
+<ul>
+<li>用户的设备管理：查询当前帐号绑定的设备。（绑定和解绑通过MQTT）</li>
+<li>用户房间管理：新增/删除住所、修改住所名称，新增/删除房间、修改房间名称，将设备添加/移出房间</li>
+</ul>
+<h2 id="时间同步机制"><a href="#时间同步机制" class="headerlink" title="时间同步机制"></a>时间同步机制</h2><p>由于涉及到用户控制端(App)、后台服务器、IoT设备三个关联方，每个方面的时间可能不同步，因此需要一种时间同步机制，<br>我们确定以服务器的时间为准，App和设备向服务器同步。</p>
+<ul>
+<li>服务器时间同步: 服务器会定时同步权威时间服务器， 使服务器时间保持准确</li>
+<li>App与服务器：App会跟服务器的标准时间进行校验，一旦相差超过一定时间(假设1min)，即提醒用户时间有错，请用户校准.（也可以不做这步）</li>
+<li>服务器与设备：设备定时与PhiHome服务器作同步</li>
+</ul>
+<h1 id="消息推送"><a href="#消息推送" class="headerlink" title="消息推送"></a>消息推送</h1><p>有时需要下发运营消息、硬件消息给App,需要推送机制。</p>
+<p>推送消息分类：</p>
+<ul>
+<li>运维消息：广告等</li>
+<li>设备具体消息：插座定时器执行成功、空气净化器开始净化、净化完成等。</li>
+<li>设备通用消息：上线下线通知。</li>
+</ul>
+<p>推送消息显示：</p>
+<ul>
+<li>App通知栏</li>
+<li>App内部消息页.(严格来说可以通过拉取实现，打开消息页面即全部拉取最新消息)</li>
+</ul>
+<h2 id="推送机制"><a href="#推送机制" class="headerlink" title="推送机制"></a>推送机制</h2><p>有时需要下发运营消息、硬件消息给App,需要推送机制。我们采用极光的push方案。</p>
+<h2 id="后台管理系统"><a href="#后台管理系统" class="headerlink" title="后台管理系统"></a>后台管理系统</h2><ul>
+<li>用户管理：查看用户帐户信息、绑定的信息</li>
+<li>设备管理：查看设备状态</li>
+<li>运维相关：日活、月活、开屏广告页设备等</li>
+</ul>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>该文档属于公司的技术方案解决文档，因为公司已倒闭，已经不存在保密问题。所以该文档属于记录保存着，供自己的以后回顾与学习使用。</p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/物联网/" title="物联网">物联网</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../../05/02/获取cell或者cell中的控件在屏幕中的位置/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">获取cell或者cell中的控件在屏幕中的位置</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../../03/06/iOS 通俗的理解：通知模式、代理模式、面向协议开发/">
+                <span class="nav-default">iOS 通俗的理解：通知模式、代理模式、面向协议开发</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

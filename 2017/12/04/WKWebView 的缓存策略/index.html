@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">WKWebView 的缓存策略</h2>
+            <div class="post-meta">
+                <span class="post-time">2017-12-04</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/技术/">技术</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-设置NSURLCache"><span class="toc-text">1. 设置NSURLCache</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-存储离线缓存"><span class="toc-text">2. 存储离线缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正常加载"><span class="toc-text">正常加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#离线加载"><span class="toc-text">离线加载</span></a></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>缓存策略有以下四种方式：</p>
+<ol>
+<li><p>默认的NSURLRequest 缓存策略</p>
+<blockquote>
+<p>后台需要做响应头设置，否则无法进行缓存。存在cache目录，n磁盘紧张会被清除</p>
+</blockquote>
+</li>
+<li><p>NSURLCache</p>
+<blockquote>
+<p>和上面类似。可以不需要后台设置也能存储。存在cache目录，n磁盘紧张会被清除</p>
+</blockquote>
+</li>
+<li><p>下载网页</p>
+<blockquote>
+<p>将整个网页下载下来，正则匹配图片url，下载图片至本地。替换图片URL,创立数据库管理，管理繁琐，细致到每一张图片的增删改。存储目录随意</p>
+</blockquote>
+</li>
+<li><p>服务器压缩包</p>
+<blockquote>
+<p>将从服务器下载压缩包，图片资源，css,js等都是相对路径。下载成功后切换，做好对比，就可以做好 存储目录随意</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<a id="more"></a>
+<p>在说存储之前，首先要了解两个类<br>1. <a href="http://www.jianshu.com/p/cdf65bf62f47" target="_blank" rel="noopener">WKWebView</a><br>2. <a href="http://www.jianshu.com/p/a8e2301d988d" target="_blank" rel="noopener">NSURLCache</a></p>
+<p>通过这前两个类来实现离线化</p>
+<h1 id="1-设置NSURLCache"><a href="#1-设置NSURLCache" class="headerlink" title="1. 设置NSURLCache"></a>1. 设置NSURLCache</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line"></span><br><span class="line">    //URL缓存设置</span><br><span class="line">    NSURLCache *urlCache = [[NSURLCache alloc]initWithMemoryCapacity:25*1024*1024 diskCapacity:100*1024*1024 diskPath:nil];</span><br><span class="line">    [NSURLCache setSharedURLCache:urlCache];</span><br><span class="line"></span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="2-存储离线缓存"><a href="#2-存储离线缓存" class="headerlink" title="2. 存储离线缓存"></a>2. 存储离线缓存</h1><blockquote>
+<p>在WKWebView中，加载成功后，将此次的请求请求缓存起来</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> //转换为NSURL类型</span><br><span class="line">NSURL *url = [NSURL URLWithString:self.loadURL];</span><br><span class="line"></span><br><span class="line">//WK用于正常加载</span><br><span class="line">self.request =  [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:6];</span><br><span class="line"></span><br><span class="line">//得到NSData 数据</span><br><span class="line">NSData *dataContent = [NSData dataWithContentsOfURL:url];</span><br><span class="line"></span><br><span class="line">//NSURLCache 实例化</span><br><span class="line">NSURLCache *cache = [NSURLCache sharedURLCache];</span><br><span class="line"></span><br><span class="line">//得到相应</span><br><span class="line">NSURLResponse *response = [[NSURLResponse alloc]initWithURL:url MIMEType:@&quot;text/html&quot; expectedContentLength:0 textEncodingName:@&quot;UTF-8&quot;];</span><br><span class="line"></span><br><span class="line">//得到CacheURLResponse</span><br><span class="line">NSCachedURLResponse *cacheResponse = [[NSCachedURLResponse alloc]initWithResponse:response data:dataContent];</span><br><span class="line"></span><br><span class="line">//进行存储</span><br><span class="line">[cache storeCachedResponse:cacheResponse forRequest:self.request];</span><br></pre></td></tr></table></figure>
+<p>在APP目录中，会在Caches目录下以Bundle Identifier为名创建缓存目录。缓存的资源图片，CSS、JS、html等都在这个目录下。</p>
+<h3 id="正常加载"><a href="#正常加载" class="headerlink" title="正常加载"></a>正常加载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.wkWebView loadRequest:self.request];</span><br></pre></td></tr></table></figure>
+<h3 id="离线加载"><a href="#离线加载" class="headerlink" title="离线加载"></a>离线加载</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSURLCache \*cache = [NSURLCache sharedURLCache]; NSCachedURLResponse \*current = [cache cachedResponseForRequest:self.request]; [self.wkWebView loadData:current.data MIMEType:@&quot;text/html&quot; characterEncodingName:@&quot;UTF-8&quot; baseURL:self.request.URL];</span><br></pre></td></tr></table></figure>
+<p>没错，这是核心代码，就这么点。说真的，用到的就这么多，但实际上业务不同，产生的逻辑思路也不同。你会发现存储的目录在Cache下面，如果手机的内存警告，磁盘空间不足，将会被清理掉。对不需要长久持续保持的业务来说，没有什么必要，但需要长久保存的业务来说是致命的。</p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/OC、Swift/" title="OC、Swift">OC、Swift</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../../../2018/01/06/App之间相互拉起交互数据/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">App之间相互拉起交互数据</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../../08/02/NSTimer需要注意的两个小问题/">
+                <span class="nav-default">NSTimer需要注意的两个小问题</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

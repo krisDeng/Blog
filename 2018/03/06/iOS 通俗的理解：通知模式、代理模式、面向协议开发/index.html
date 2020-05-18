@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">iOS 通俗的理解：通知模式、代理模式、面向协议开发</h2>
+            <div class="post-meta">
+                <span class="post-time">2018-03-06</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/设计模式/">设计模式</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NSNotification-通知模式"><span class="toc-text">NSNotification (通知模式)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Delegate（代理模式）"><span class="toc-text">Delegate（代理模式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向协议"><span class="toc-text">面向协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>只要是有过iOS开发的小伙伴，肯定都知道 (NSNotification)通知模式、delegate（代理模式），面向协议开发，那大家能通俗的给他人解释这些吗 ？</p>
+<a id="more"></a>
+<hr>
+<h2 id="NSNotification-通知模式"><a href="#NSNotification-通知模式" class="headerlink" title="NSNotification (通知模式)"></a>NSNotification (通知模式)</h2><p><a href="https://developer.apple.com/documentation/foundation/nsnotificationcenter" target="_blank" rel="noopener">NSNotification</a></p>
+<p>通俗的理解为：</p>
+<ul>
+<li>A 跟 B 想要联系</li>
+<li>A 买了个电话（addObserver），设置了电话号码（KEY）</li>
+<li>B 通过 A的电话号码（Key），拨打电话（postNotification）联系A了。</li>
+</ul>
+<p>所以很清楚的看到，首先A要有电话（addObserver）、电话号码（KEY）,  B才能 拨打（postNotification）联系到A</p>
+<blockquote>
+<p>注意： 同个KEY 避免多次 addObserver，否则的话收到消息后，会多次执行。<br>通知是一个【一对多】的关系</p>
+</blockquote>
+<hr>
+<h2 id="Delegate（代理模式）"><a href="#Delegate（代理模式）" class="headerlink" title="Delegate（代理模式）"></a>Delegate（代理模式）</h2><p>代理主要由三部分组成：</p>
+<p>协议：用来指定代理双方可以做什么，必须做什么。<br>代理：根据指定的协议，完成委托方需要实现的功能。<br>委托：根据指定的协议，指定代理去完成什么功能。</p>
+<p>通俗的理解为：</p>
+<p>你上班很忙没时间做饭，那上班吃饭全靠外卖。于是你跟商家签订了一个协议合同。<br>协议合同里写明了，这个商家给你每天几点准时给你送饭。<br>而商家就是这个协议中规定要做事情的代理人</p>
+<blockquote>
+<p>简单理解[代理]是:”自己做不了的事情,就去雇佣一个可以做这些事的人,交给他去做!”</p>
+</blockquote>
+<blockquote>
+<p>代理是一个【一对一】的关系</p>
+</blockquote>
+<p><img src="/blog/2018/03/06/iOS 通俗的理解：通知模式、代理模式、面向协议开发/5D9D36FB6D9867F62B51F5C229A3D522.jpg" alt="IMAGE"></p>
+<hr>
+<h2 id="面向协议"><a href="#面向协议" class="headerlink" title="面向协议"></a>面向协议</h2><p>面向协议编程是 Swift中的一个独有特性，更多是作为一个组件化开发。</p>
+<p>具体的方法： </p>
+<ul>
+<li>定义协议功能，</li>
+<li>扩展协议类且实现协议功能</li>
+<li>哪些对象需要该功能，就继承协议，调用其中需要的方法。</li>
+</ul>
+<p>通俗的理解为：</p>
+<p>你上班很忙没时间做饭，那上班吃饭全靠外卖。<br>这时你发现有【饿了吗】、【美团】上各式各样的饭菜。<br>然后你根据 【饿了吗】、【美团】上的菜单，你下单你喜欢的饭菜。</p>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/2113ffe54b30" target="_blank" rel="noopener">你真的了解iOS代理设计模式吗？</a><br><a href="http://zhihaozhang.github.io/2018/05/20/ProtocolOP/" target="_blank" rel="noopener">面向协议编程初探</a></p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/设计模式/" title="设计模式">设计模式</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../../04/09/PhiHome 设计文档/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">PhiHome 设计文档</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../../02/02/Hybrid App简要介绍/">
+                <span class="nav-default">Hybrid App简要介绍</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

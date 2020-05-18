@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">EmptyDataSet-Swift - 使用分析</h2>
+            <div class="post-meta">
+                <span class="post-time">2018-06-06</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/设计模式/">设计模式</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>最近一直想找个 Swift 版本的【空数据的时候的展位图】自动加载的代码研学习下。<br>在网上推荐了很多，最出名的某过于<a href="https://github.com/dzenbot/DZNEmptyDataSet" target="_blank" rel="noopener">DZNEmptyDataSet</a>,但是是Objective-C版本的。<br>幸好又有大牛翻译了<code>DZNEmptyDataSet</code>出了<a href="https://github.com/Xiaoye220/EmptyDataSet-Swift" target="_blank" rel="noopener">EmptyDataSet-Swift</a></p>
+<a id="more"></a>
+<hr>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>具体的调用很简单，将 EmptyDataSet 文件夹下的5个类拷贝到项目中。</p>
+<p><img src="/blog/2018/06/06/EmptyDataSet-Swift - 使用分析/7636C45D8842100419D83268E2D1998A.jpg" alt="IMAGE"></p>
+<p>代码：</p>
+<blockquote>
+<p>1: 在初始的 UITableView、UIScrollView、UICollectionView 在赋予代理对象</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private lazy var tableView: UITableView = &#123;</span><br><span class="line">    let tableView = UITableView(frame: .zero)</span><br><span class="line">    tableView.delegate = self</span><br><span class="line">    tableView.dataSource = self</span><br><span class="line">    </span><br><span class="line">    // 在创建tableView的时候，在其 emptyDataSetSource，emptyDataSetDelegate 赋予代理对象</span><br><span class="line">    tableView.emptyDataSetSource = self</span><br><span class="line">    tableView.emptyDataSetDelegate = self</span><br><span class="line">    return tableView</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2: 继承 EmptyDataSetSource, EmptyDataSetDelegate 根据需求实现方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// MARK: 空数据界面的内容展现</span><br><span class="line">extension ViewController: EmptyDataSetSource, EmptyDataSetDelegate &#123;</span><br><span class="line"></span><br><span class="line">    // EmptyDataSetSource 数据源</span><br><span class="line">    func title(forEmptyDataSet scrollView: UIScrollView) -&gt; NSAttributedString? &#123;</span><br><span class="line">        return NSAttributedString(string: &quot;暂无订单&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func image(forEmptyDataSet scrollView: UIScrollView) -&gt; UIImage? &#123;</span><br><span class="line">        return UIImage.init(named: &quot;noData&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // EmptyDataSetDelegate 代理</span><br><span class="line">    func emptyDataSet(_ scrollView: UIScrollView, didTapView view: UIView) &#123;</span><br><span class="line">        print(&quot;图片点击事情&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/blog/2018/06/06/EmptyDataSet-Swift - 使用分析/EA32D1719D6072547B1733834C024907.jpg" alt="IMAGE"></p>
+<p>调用起来是不是很方便，那么神奇的功能内部是怎么实现的呢？？</p>
+<hr>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>我们先分析下 5个源码的类：</p>
+<p>1、EmptyDataSetView.swift<br>2、EmptyDataSetView+Extension.swift<br>3、EmptyDataSetSource.swift<br>4、EmptyDataSetDelegate.swift<br>5、EmptyDataSet.swift</p>
+<p>【类简介】</p>
+<p><code>EmptyDataSetView、EmptyDataSetView+Extension.swift</code> 是展位图 展现页。<br>其内容就是先初始好控件、布局好位置，但是展现的内容（文字、图片、背景…）都为nil,由其他对象给与赋值。</p>
+<p><code>EmptyDataSetSource.swift</code> 是用面向协议方式写的 数据源赋值，哪个对象需要使用。继承它，并实现其方法进行赋值。</p>
+<p><code>EmptyDataSetDelegate.swift</code> 是用面向协议方式写的 代理事情，哪个对象需要使用。继承它，并实现其代理方法。</p>
+<p><code>EmptyDataSet.swift</code> 是才整个功能的核心部分。</p>
+<p>【EmptyDataSet】</p>
+<p>首先，它扩展了 UIScrollView 的类方法，且继承了 点击事情。 </p>
+<p>在功能实现上，需要 【空数据、异常数据展位图】是 UITableView、WebView、UICollectionView 三个控件上。<br>而他们都继承于 UIScrollView，所以直接对 UIScrollView 进行扩展。</p>
+<p>在很多业务场景上，对 点击展位图、或者是 展位图上的按钮进行【刷新】的操作，所以继承了 UIGestureRecognizerDelegate 事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">extension UIScrollView: UIGestureRecognizerDelegate &#123;</span><br><span class="line">  ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其次，该类用了 <a href="https://www.jianshu.com/p/3efc3e94b14c" target="_blank" rel="noopener">iOS runtime ：Method Swizzling</a> 方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">private static let swizzleReloadData: () = &#123;</span><br><span class="line">    let tableViewOriginalSelector = #selector(UITableView.reloadData)</span><br><span class="line">    let tableViewSwizzledSelector = #selector(UIScrollView.tableViewSwizzledReloadData)</span><br><span class="line">    </span><br><span class="line">    swizzleMethod(for: UITableView.self, originalSelector: tableViewOriginalSelector, swizzledSelector: tableViewSwizzledSelector)</span><br><span class="line">    </span><br><span class="line">    let collectionViewOriginalSelector = #selector(UICollectionView.reloadData)</span><br><span class="line">    let collectionViewSwizzledSelector = #selector(UIScrollView.collectionViewSwizzledReloadData)</span><br><span class="line">    </span><br><span class="line">    swizzleMethod(for: UICollectionView.self, originalSelector: collectionViewOriginalSelector, swizzledSelector: collectionViewSwizzledSelector)</span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">private static let swizzleEndUpdates: () = &#123;</span><br><span class="line">    let originalSelector = #selector(UITableView.endUpdates)</span><br><span class="line">    let swizzledSelector = #selector(UIScrollView.tableViewSwizzledEndUpdates)</span><br><span class="line">    </span><br><span class="line">    swizzleMethod(for: UITableView.self, originalSelector: originalSelector, swizzledSelector: swizzledSelector)</span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private class func swizzleMethod(for aClass: AnyClass, originalSelector: Selector, swizzledSelector: Selector) &#123;</span><br><span class="line">    let originalMethod = class_getInstanceMethod(aClass, originalSelector)</span><br><span class="line">    let swizzledMethod = class_getInstanceMethod(aClass, swizzledSelector)</span><br><span class="line">    </span><br><span class="line">    let didAddMethod = class_addMethod(aClass, originalSelector, method_getImplementation(swizzledMethod!), method_getTypeEncoding(swizzledMethod!))</span><br><span class="line">    </span><br><span class="line">    if didAddMethod &#123;</span><br><span class="line">        class_replaceMethod(aClass, swizzledSelector, method_getImplementation(originalMethod!), method_getTypeEncoding(originalMethod!))</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        method_exchangeImplementations(originalMethod!, swizzledMethod!)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将 UITableView、UICollectionView 的【reloadData】事情进行捕获且替换成自己的方法。<br>在每次【reloadData】的时候，自动计算 是否有数据，根据结果来判断是否 显示 emptyView</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">internal var itemsCount: Int &#123;</span><br><span class="line">       var items = 0</span><br><span class="line">       </span><br><span class="line">       // UITableView support</span><br><span class="line">       if let tableView = self as? UITableView &#123;</span><br><span class="line">           var sections = 1</span><br><span class="line">           </span><br><span class="line">           if let dataSource = tableView.dataSource &#123;</span><br><span class="line">               if dataSource.responds(to: #selector(UITableViewDataSource.numberOfSections(in:))) &#123;</span><br><span class="line">                   sections = dataSource.numberOfSections!(in: tableView)</span><br><span class="line">               &#125;</span><br><span class="line">               if dataSource.responds(to: #selector(UITableViewDataSource.tableView(_:numberOfRowsInSection:))) &#123;</span><br><span class="line">                   for i in 0 ..&lt; sections &#123;</span><br><span class="line">                       items += dataSource.tableView(tableView, numberOfRowsInSection: i)</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; else if let collectionView = self as? UICollectionView &#123;</span><br><span class="line">           var sections = 1</span><br><span class="line">           </span><br><span class="line">           if let dataSource = collectionView.dataSource &#123;</span><br><span class="line">               if dataSource.responds(to: #selector(UICollectionViewDataSource.numberOfSections(in:))) &#123;</span><br><span class="line">                   sections = dataSource.numberOfSections!(in: collectionView)</span><br><span class="line">               &#125;</span><br><span class="line">               if dataSource.responds(to: #selector(UICollectionViewDataSource.collectionView(_:numberOfItemsInSection:))) &#123;</span><br><span class="line">                   for i in 0 ..&lt; sections &#123;</span><br><span class="line">                       items += dataSource.collectionView(collectionView, numberOfItemsInSection: i)</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       return items</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/dzenbot/DZNEmptyDataSet" target="_blank" rel="noopener">DZNEmptyDataSet</a><br><a href="https://github.com/Xiaoye220/EmptyDataSet-Swift" target="_blank" rel="noopener">EmptyDataSet-Swift</a><br><a href="https://www.jianshu.com/p/c493f44c74b2" target="_blank" rel="noopener">史上最全的DZNEmptyDataSet(空白页框架)说明书</a><br><a href="https://www.jianshu.com/p/3efc3e94b14c" target="_blank" rel="noopener">iOS runtime实战应用：Method Swizzling</a></p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/设计模式/" title="设计模式">设计模式</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../../07/05/面向协议思维 实现 NavigationItem 按钮的抽取/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">面向协议思维 实现 NavigationItem 按钮的抽取</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../../05/16/Carthage的使用/">
+                <span class="nav-default">Carthage和CocoaPods简介</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>

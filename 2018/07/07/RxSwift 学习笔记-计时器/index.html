@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Kris的博客</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="../../../../css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="../../../../index.html" class="header-nav-link">
+                首页
+            </a>
+            
+
+            
+            <a href="../../../../archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="../../../../tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+            <a href="/blog/about/" class="header-nav-link">
+                关于
+            </a>
+            
+        </nav>
+    </div>
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="../../../../index.html" class="mobile-nav-title-link">kris's Blog</a>
+        </div>
+
+    </div>
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="../../../../index.html" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="../../../../archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="../../../../tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/blog/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">RxSwift 学习笔记 - 计时器</h2>
+            <div class="post-meta">
+                <span class="post-time">2018-07-07</span>
+                
+                <span class="post-category">
+                    
+                    <a class="category" href="../../../../categories/RxSwift/">RxSwift</a>
+                    
+                </span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo-一-计算器"><span class="toc-text">Demo(一) 计算器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo-二-倒时器"><span class="toc-text">Demo(二) 倒时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-text">参考链接</span></a></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
+    </div>
+</div>
+        <div class="post-content">
+            <p>我们继续 RxSwift的学习，建议大家先看下<a href="https://beeth0ven.github.io/RxSwift-Chinese-Documentation/" target="_blank" rel="noopener">Swift 中文文档</a>，先弄明白RxSwift懂基本概念。</p>
+<a id="more"></a>
+<hr>
+<h2 id="Demo-一-计算器"><a href="#Demo-一-计算器" class="headerlink" title="Demo(一) 计算器"></a>Demo(一) 计算器</h2><p>【需求】</p>
+<ul>
+<li>要一个文本输入框</li>
+<li>一个定时器</li>
+<li>开始的时候，定时器不断的显示时间</li>
+</ul>
+<p>【代码】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">// Demo(三) 计算器</span><br><span class="line">class ViewController: UIViewController &#123;</span><br><span class="line"></span><br><span class="line">    // 创建 清除包</span><br><span class="line">    let disposeBag = DisposeBag()</span><br><span class="line"></span><br><span class="line">    override func viewDidLoad() &#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        // 计算器开始按钮</span><br><span class="line">        let btn = UIButton(frame: CGRect(x: 120, y: 210, width: 80, height: 35))</span><br><span class="line">        btn.setTitle(&quot;开始&quot;, for: .normal)</span><br><span class="line">        btn.backgroundColor = UIColor.gray</span><br><span class="line">        self.view.addSubview(btn)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        // 创建个计算器</span><br><span class="line">        let timerSquence = Observable&lt;Int&gt;.interval(1, scheduler: MainScheduler.instance)</span><br><span class="line"></span><br><span class="line">        timerSquence.map(formatTimeInterval)</span><br><span class="line">        .bind(to: btn.rx.attributedTitle(for: .normal))</span><br><span class="line">        .disposed(by: disposeBag)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // 设置计算器时间</span><br><span class="line">    func formatTimeInterval(ms: NSInteger) -&gt; NSMutableAttributedString &#123;</span><br><span class="line">        let str = String(format: &quot;%0.2d:%0.2d:%0.2d&quot;,</span><br><span class="line">                         arguments:[(ms / 600) % 600, (ms % 600 ) / 10, ms % 10] )</span><br><span class="line">        //富文本设置</span><br><span class="line">        let attributeStr = NSMutableAttributedString(string: str)</span><br><span class="line">        ////从文本0开始6个字符字体HelveticaNeue-Bold,16号</span><br><span class="line">        attributeStr.addAttribute(NSAttributedString.Key.font,</span><br><span class="line">                                  value: UIFont(name: &quot;HelveticaNeue-Bold&quot;, size: 16)!,</span><br><span class="line">                                  range: NSMakeRange(0, 5))</span><br><span class="line">        //设置字体颜色</span><br><span class="line">        attributeStr.addAttribute(NSAttributedString.Key.foregroundColor,</span><br><span class="line">                                  value: UIColor.white,</span><br><span class="line">                                  range: NSMakeRange(0, 5))</span><br><span class="line">        //设置文字背景颜色</span><br><span class="line">        attributeStr.addAttribute(NSAttributedString.Key.backgroundColor,</span><br><span class="line">                                  value: UIColor.orange,</span><br><span class="line">                                  range: NSMakeRange(0, 5))</span><br><span class="line">        return attributeStr</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/blog/2018/07/07/RxSwift 学习笔记-计时器/3D299BCA07C38CDBAA5B250F65996DA6.jpg" alt=""></p>
+<hr>
+<h2 id="Demo-二-倒时器"><a href="#Demo-二-倒时器" class="headerlink" title="Demo(二) 倒时器"></a>Demo(二) 倒时器</h2><p>【需求】</p>
+<ul>
+<li>要一个文本输入框</li>
+<li>一个定时器</li>
+<li>开始的时候，定时器不断的显示时间</li>
+</ul>
+<p>【代码】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">class ViewController: UIViewController &#123;</span><br><span class="line"></span><br><span class="line">    // 创建 清除包</span><br><span class="line">    let disposeBag = DisposeBag()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    override func viewDidLoad() &#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line"></span><br><span class="line">        // 计时器开始按钮</span><br><span class="line">        let btn = UIButton(frame: CGRect(x: 120, y: 210, width: 120, height: 35))</span><br><span class="line">        btn.setTitle(&quot;开始倒计时&quot;, for: .normal)</span><br><span class="line">        btn.backgroundColor = UIColor.gray</span><br><span class="line">        self.view.addSubview(btn)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Observable&lt;TimeInterval&gt;.timer(duration: 5.0, interval: 1.0)</span><br><span class="line">            .subscribe(onNext: &#123; (remain) in</span><br><span class="line">                btn.setTitle(&quot;\(remain)&quot;, for: .normal)</span><br><span class="line">                btn.isEnabled = false</span><br><span class="line"></span><br><span class="line">        &#125;, onError: &#123; (error) in</span><br><span class="line"></span><br><span class="line">        &#125;, onCompleted: &#123;</span><br><span class="line">            btn.setTitle(&quot;重新开始倒计时&quot;, for: .normal)</span><br><span class="line">            btn.isEnabled = true</span><br><span class="line"></span><br><span class="line">        &#125;).disposed(by: disposeBag)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension Observable where Element: FloatingPoint &#123;</span><br><span class="line"></span><br><span class="line">        /*</span><br><span class="line">         - parameter duration: 总时长</span><br><span class="line">         - parameter interval: 时间间隔</span><br><span class="line">         - parameter ascending: true 为顺数计时，false 为倒数计时</span><br><span class="line">         */</span><br><span class="line"></span><br><span class="line">        public static func timer(duration: RxTimeInterval = RxTimeInterval.infinity,</span><br><span class="line">                                 interval: RxTimeInterval = 1,</span><br><span class="line">                                 ascending: Bool = false,</span><br><span class="line">                                 scheduler: SchedulerType = MainScheduler.instance)</span><br><span class="line">            -&gt; Observable&lt;TimeInterval&gt; &#123;</span><br><span class="line">                let count = (duration == RxTimeInterval.infinity) ? .max : Int(duration / interval) + 1</span><br><span class="line">                return Observable&lt;Int&gt;.timer(0, period: interval, scheduler: scheduler)</span><br><span class="line">                    .map &#123; TimeInterval($0) * interval &#125;</span><br><span class="line">                    .map &#123; ascending ? $0 : (duration - $0) &#125;</span><br><span class="line">                    .take(count)</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 踩坑： 一开始想用  Observable<int>.interval，然后用 timeout 做结束时间。<br>   最后发现  timeout 不是超过时间后，结束操作的意思而是一个事情的响应超时的意思。</int></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">         // timeOut的作用  : 在一定的时间内未响应事情，就报错 onError:。</span><br><span class="line">         //  列子中 1、每隔10秒响应一次事情 ，</span><br><span class="line">         //         2、5秒钟内未被响应报错</span><br><span class="line">         //  所以该代码 响应了 onError: 。</span><br><span class="line"></span><br><span class="line">    let timerSquence = Observable&lt;Int&gt;.interval(10, scheduler: MainScheduler.instance).timeout(5, scheduler: MainScheduler.instance).subscribe(onNext: &#123; (event) in</span><br><span class="line"></span><br><span class="line">        print(event)</span><br><span class="line"></span><br><span class="line">    &#125;, onError: &#123; (error) in</span><br><span class="line">        print(error)</span><br><span class="line"></span><br><span class="line">    &#125;, onCompleted: &#123;</span><br><span class="line">        print(&quot;onCompleted&quot;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.jianshu.com/p/82a79a452dba" target="_blank" rel="noopener">轮询的一种解决方案</a><br><a href="http://www.alonemonkey.com/2017/03/24/rxswift-part-three/" target="_blank" rel="noopener">RxSwift 学习笔记(一) UIButton</a></p>
+
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="../../../../tags/RxSwift/" title="RxSwift">RxSwift</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="../../../09/29/JSONExport/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">JSONExport</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="../../06/RxSwift 学习笔记-UIButton/">
+                <span class="nav-default">RxSwift 学习笔记 - UIButton</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
+
+    
+
+    
+
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+                2017 -
+            
+            2020
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">kris</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
+    </div>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../../../../js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
+
+</script>
+</html>
